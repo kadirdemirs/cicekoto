@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tasarım 11 — Retro Garage</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#f4ead5;--ink:#2b2118;--orange:#d9622b;--teal:#1f7a6d;--cream:#fbf6ea;--line:#e0d2b8;--trans:.28s cubic-bezier(.34,1.56,.64,1)}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#5c4f3e;overflow-x:hidden}
+.disp{font-family:'Bricolage Grotesque',sans-serif}
+.badge{position:fixed;top:14px;right:14px;background:var(--ink);color:var(--bg);padding:6px 14px;font-size:.7rem;border-radius:99px;z-index:9999}
+nav{display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;padding:22px 30px}
+.brand{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.3rem;color:var(--ink);display:flex;align-items:center;gap:10px}
+.brand i{color:var(--orange)}
+.links{display:flex;gap:28px;font-size:.9rem;font-weight:600}
+.links a{color:var(--ink);transition:var(--trans)}.links a:hover{color:var(--orange)}
+.ncta{font-weight:700;font-size:.85rem;color:var(--cream);background:var(--ink);padding:11px 22px;border-radius:99px;transition:var(--trans)}
+.ncta:hover{background:var(--orange)}
+/* hero */
+.hero{max-width:1180px;margin:46px auto 0;padding:0 30px;display:grid;grid-template-columns:1.2fr .8fr;gap:46px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);background:var(--cream);border:2px solid var(--ink);padding:7px 16px;border-radius:99px;margin-bottom:22px}
+h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2.8rem,7vw,5.2rem);color:var(--ink);line-height:.98;letter-spacing:-.02em}
+h1 .o{color:var(--orange)}
+.hsub{font-size:1.08rem;line-height:1.6;margin-top:24px;max-width:480px;font-weight:500}
+.hbtns{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.btn1{font-weight:700;font-size:.95rem;color:var(--cream);background:var(--orange);padding:15px 30px;border-radius:99px;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:var(--trans)}
+.btn1:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+.btn2{font-weight:700;font-size:.95rem;color:var(--ink);background:var(--cream);padding:15px 30px;border-radius:99px;border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transition:var(--trans)}
+.btn2:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink)}
+/* emblem */
+.emblem{aspect-ratio:1;border-radius:50%;background:var(--teal);border:4px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--cream);text-align:center;box-shadow:8px 8px 0 rgba(43,33,24,.2);position:relative;animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.emblem .inner{animation:spin 28s linear infinite reverse}
+.emblem .yr{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:4.5rem;line-height:1}
+.emblem .est{font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;margin-top:4px}
+.emblem .ring{position:absolute;inset:14px;border:2px dashed rgba(251,246,234,.4);border-radius:50%}
+/* stats */
+.strip{max-width:1180px;margin:60px auto 0;padding:0 30px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.strip>div{background:var(--cream);border:2px solid var(--ink);border-radius:18px;padding:24px 18px;text-align:center;box-shadow:3px 3px 0 var(--ink);transition:var(--trans)}
+.strip>div:hover{transform:translateY(-4px)}
+.strip .n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.4rem;color:var(--ink)}
+.strip .l{font-size:.8rem;font-weight:600;margin-top:2px}
+/* services */
+.sec{max-width:1180px;margin:110px auto 0;padding:0 30px}
+.sechead{text-align:center;margin-bottom:46px}
+.sechead .lbl{font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.sechead h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem);color:var(--ink);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--cream);border:2px solid var(--ink);border-radius:20px;padding:30px 26px;box-shadow:4px 4px 0 var(--ink);transition:var(--trans)}
+.card:hover{transform:translate(-3px,-3px);box-shadow:7px 7px 0 var(--teal)}
+.card .ico{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;color:var(--cream);background:var(--teal);border:2px solid var(--ink);margin-bottom:18px}
+.card:nth-child(3n+1) .ico{background:var(--orange)}
+.card:nth-child(3n+2) .ico{background:var(--ink)}
+.card h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.25rem;color:var(--ink);margin-bottom:8px}
+.card p{font-size:.9rem;line-height:1.55;font-weight:500}
+/* cta */
+.ctabox{max-width:1180px;margin:110px auto 70px;padding:58px 44px;background:var(--ink);border-radius:26px;text-align:center;color:var(--cream);background-image:repeating-linear-gradient(45deg,rgba(217,98,43,.08) 0 16px,transparent 16px 32px)}
+.ctabox h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.2rem)}
+.ctabox p{margin:14px 0 28px;opacity:.85;font-size:1.05rem}
+.ctabox .btn1{background:var(--orange);box-shadow:3px 3px 0 var(--orange)}
+.rv{opacity:0;transform:translateY(30px);transition:.7s cubic-bezier(.34,1.4,.64,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:880px){.hero{grid-template-columns:1fr}.emblem{max-width:300px;margin:0 auto}.strip,.grid{grid-template-columns:1fr 1fr}.links{display:none}}
+</style>
+</head>
+<body>
+<div class="badge">Tasarım 11 — Retro Garage</div>
+<nav>
+  <div class="brand"><i class="fas fa-gear"></i> Çiçek Otomotiv</div>
+  <div class="links"><a href="#">Hizmetler</a><a href="#">Hakkımızda</a><a href="#">Galeri</a><a href="#">İletişim</a></div>
+  <a href="#" class="ncta">Randevu Al</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="tag">★ Başakşehir Garajı</div>
+    <h1 class="rv in">Her marka,<br>her model,<br><span class="o">doğru servis.</span></h1>
+    <p class="hsub rv in">VW'dan BMW'ye 30'dan fazla markada bakım ve onarım. Eski usül zanaat, yeni nesil cihazlar. Orijinal parça, garantili işçilik, şeffaf fiyat.</p>
+    <div class="hbtns rv in">
+      <a href="#" class="btn1">Randevu Al →</a>
+      <a href="#" class="btn2"><i class="fas fa-phone"></i> 0212 549 17 63</a>
+    </div>
+  </div>
+  <div class="emblem rv in"><div class="ring"></div><div class="inner"><div class="est">Est.</div><div class="yr">'01</div><div class="est">Garage</div></div></div>
+</section>
+
+<div class="strip">
+  <div class="rv"><div class="n">25+</div><div class="l">Yıl Deneyim</div></div>
+  <div class="rv"><div class="n">5K+</div><div class="l">Mutlu Müşteri</div></div>
+  <div class="rv"><div class="n">30+</div><div class="l">Araç Markası</div></div>
+  <div class="rv"><div class="n">%98</div><div class="l">Memnuniyet</div></div>
+</div>
+
+<section class="sec">
+  <div class="sechead rv"><div class="lbl">Hizmetlerimiz</div><h2>Garajımızda neler yapıyoruz</h2></div>
+  <div class="grid">
+    <div class="card rv"><div class="ico"><i class="fas fa-oil-can"></i></div><h3>Periyodik Bakım</h3><p>Yağ, filtre ve km bakımları fabrika reçetesiyle eksiksiz.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-cog"></i></div><h3>Motor Tamiri</h3><p>Timing belt, silindir kapağı ve komple motor revizyonu.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-gears"></i></div><h3>DSG Şanzıman</h3><p>VW Grup DSG sistemlerinde bölgenin en deneyimli servisi.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-bolt"></i></div><h3>Elektrik & Elektronik</h3><p>OBD tanı, ECU programlama ve elektrik arıza giderme.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-snowflake"></i></div><h3>Klima Bakımı</h3><p>Gaz dolumu, kompresör tamiri ve performans testi.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-paint-roller"></i></div><h3>Kaporta & Boya</h3><p>Kaza onarımı, spot boya ve profesyonel araç boyama.</p></div>
+  </div>
+</section>
+
+<div class="ctabox rv">
+  <h2>Arabanı Garaja Getir</h2>
+  <p>Randevunu online al, 2 saat içinde seni arayalım.</p>
+  <a href="#" class="btn1">Hemen Randevu Al →</a>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv:not(.in)').forEach((el,i)=>{el.style.transitionDelay=(i%6*60)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

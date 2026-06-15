@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tasarım 14 — Dark Luxury</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0c;--bg2:#111114;--gold:#d4af37;--gold2:#f5d77a;--txt:#86868b;--w:rgba(212,175,55,.14);--trans:.45s cubic-bezier(.22,1,.36,1)}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden}
+.syne{font-family:'Syne',sans-serif}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 70% 0%,rgba(212,175,55,.08),transparent 50%)}
+.wrap{position:relative;z-index:2}
+.badge{position:fixed;top:14px;right:14px;background:rgba(0,0,0,.7);border:1px solid var(--gold);border-radius:99px;padding:6px 14px;font-size:.7rem;color:var(--gold);z-index:9999}
+nav{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:24px 34px}
+.brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+.brand i{color:var(--gold)}
+.links{display:flex;gap:30px;font-size:.88rem;font-weight:400}
+.links a{transition:var(--trans)}.links a:hover{color:var(--gold)}
+.ncta{font-size:.84rem;font-weight:600;color:var(--bg);background:linear-gradient(135deg,var(--gold2),var(--gold));padding:11px 24px;border-radius:99px;transition:var(--trans)}
+.ncta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(212,175,55,.3)}
+/* hero */
+.hero{max-width:1200px;margin:50px auto 0;padding:0 34px;text-align:center}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;font-weight:500;letter-spacing:.04em;color:var(--gold);border:1px solid var(--w);padding:8px 18px;border-radius:99px;margin-bottom:30px}
+.tag .d{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);animation:p 1.8s infinite}
+@keyframes p{50%{opacity:.4}}
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,8vw,6.5rem);color:#fff;line-height:1;letter-spacing:-.03em}
+h1 .g{background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hsub{font-size:1.12rem;max-width:600px;margin:28px auto 0;line-height:1.7;font-weight:300}
+.hbtns{display:flex;gap:14px;justify-content:center;margin-top:38px;flex-wrap:wrap}
+.btn1{font-size:.95rem;font-weight:600;color:var(--bg);background:linear-gradient(135deg,var(--gold2),var(--gold));padding:15px 34px;border-radius:99px;transition:var(--trans)}
+.btn1:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(212,175,55,.35)}
+.btn2{font-size:.95rem;font-weight:600;color:#fff;border:1px solid var(--w);padding:15px 34px;border-radius:99px;transition:var(--trans)}
+.btn2:hover{border-color:var(--gold);color:var(--gold)}
+/* gold divider */
+.gdivider{max-width:1200px;margin:60px auto 0;padding:0 34px}
+.gdivider .line{height:1px;background:linear-gradient(90deg,transparent,var(--w),transparent)}
+/* stats */
+.strip{max-width:1100px;margin:50px auto 0;padding:0 34px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--w);border:1px solid var(--w);border-radius:18px;overflow:hidden}
+.strip>div{background:var(--bg2);padding:30px 20px;text-align:center;transition:var(--trans)}
+.strip>div:hover{background:#16160f}
+.strip .n{font-family:'Syne',sans-serif;font-weight:800;font-size:2.6rem;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.strip .l{font-size:.78rem;margin-top:4px;letter-spacing:.04em}
+/* services */
+.sec{max-width:1200px;margin:120px auto 0;padding:0 34px}
+.sechead{text-align:center;margin-bottom:50px}
+.sechead .lbl{font-size:.76rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.sechead h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.4rem);color:#fff;margin-top:12px;letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--bg2);border:1px solid var(--w);border-radius:20px;padding:34px 28px;transition:var(--trans);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,175,55,.06),transparent 60%);opacity:0;transition:var(--trans)}
+.card:hover{transform:translateY(-8px);border-color:rgba(212,175,55,.4);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.card:hover::before{opacity:1}
+.card .ico{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;font-size:1.3rem;color:var(--gold);background:rgba(212,175,55,.1);border:1px solid var(--w);margin-bottom:20px;transition:var(--trans)}
+.card:hover .ico{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--bg)}
+.card h3{font-family:'Syne',sans-serif;font-weight:600;font-size:1.25rem;color:#fff;margin-bottom:8px}
+.card p{font-size:.9rem;line-height:1.65;font-weight:300}
+/* cta */
+.ctabox{max-width:1200px;margin:120px auto 80px;padding:64px 50px;border-radius:28px;text-align:center;background:var(--bg2);border:1px solid var(--w);position:relative;overflow:hidden}
+.ctabox::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(212,175,55,.1),transparent 60%)}
+.ctabox h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.4rem);color:#fff;letter-spacing:-.02em;position:relative}
+.ctabox p{margin:16px 0 30px;font-size:1.05rem;font-weight:300;position:relative}
+.ctabox .btn1{position:relative}
+.rv{opacity:0;transform:translateY(30px);transition:.85s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:880px){.strip,.grid{grid-template-columns:1fr 1fr}.links{display:none}}
+</style>
+</head>
+<body>
+<div class="badge">Tasarım 14 — Dark Luxury</div>
+<div class="glow"></div>
+<div class="wrap">
+<nav>
+  <div class="brand"><i class="fas fa-gear"></i> ÇİÇEK OTOMOTİV</div>
+  <div class="links"><a href="#">Hizmetler</a><a href="#">Hakkımızda</a><a href="#">Galeri</a><a href="#">İletişim</a></div>
+  <a href="#" class="ncta">Randevu Al</a>
+</nav>
+
+<section class="hero">
+  <div class="tag rv in"><span class="d"></span> Başakşehir'de 25 yıldır aynı özen</div>
+  <h1 class="rv in">Her marka. Her model.<br><span class="g">Doğru servis.</span></h1>
+  <p class="hsub rv in">VW'dan BMW'ye, Toyota'dan Mercedes'e 30'dan fazla markada bakım ve onarım. Orijinal parça, garantili işçilik, şeffaf fiyat.</p>
+  <div class="hbtns rv in">
+    <a href="#" class="btn1"><i class="fas fa-calendar-check"></i> Randevu Al</a>
+    <a href="#" class="btn2"><i class="fas fa-phone"></i> 0212 549 17 63</a>
+  </div>
+</section>
+
+<div class="gdivider"><div class="line"></div></div>
+
+<div class="strip">
+  <div class="rv"><div class="n">25+</div><div class="l">Yıl Deneyim</div></div>
+  <div class="rv"><div class="n">5K+</div><div class="l">Mutlu Müşteri</div></div>
+  <div class="rv"><div class="n">30+</div><div class="l">Araç Markası</div></div>
+  <div class="rv"><div class="n">%98</div><div class="l">Memnuniyet</div></div>
+</div>
+
+<section class="sec">
+  <div class="sechead rv"><div class="lbl">Hizmetlerimiz</div><h2>Tek Çatı Altında Tüm Servis</h2></div>
+  <div class="grid">
+    <div class="card rv"><div class="ico"><i class="fas fa-oil-can"></i></div><h3>Periyodik Bakım</h3><p>Yağ, filtre ve km bakımları fabrika reçetesiyle eksiksiz uygulanır.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-cog"></i></div><h3>Motor Tamiri</h3><p>Timing belt, silindir kapağı ve komple motor revizyonu.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-gears"></i></div><h3>DSG Şanzıman</h3><p>VW Grup DSG sistemlerinde bölgenin en deneyimli servisi.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-bolt"></i></div><h3>Elektrik & Elektronik</h3><p>OBD tanı, ECU programlama ve elektrik arıza giderme.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-snowflake"></i></div><h3>Klima Bakımı</h3><p>Gaz dolumu, kompresör tamiri ve sistem performans testi.</p></div>
+    <div class="card rv"><div class="ico"><i class="fas fa-paint-roller"></i></div><h3>Kaporta & Boya</h3><p>Kaza onarımı, spot boya ve profesyonel araç boyama.</p></div>
+  </div>
+</section>
+
+<div class="ctabox rv">
+  <h2>Aracınız En İyi Servisi Hak Ediyor</h2>
+  <p>Randevunuzu online alın, 2 saat içinde sizi arayalım.</p>
+  <a href="#" class="btn1">Hemen Randevu Al →</a>
+</div>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv:not(.in)').forEach((el,i)=>{el.style.transitionDelay=(i%6*60)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

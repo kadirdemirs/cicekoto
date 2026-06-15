@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tasarım 6 — Neon Cyber</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#04060c;--neon:#00f0ff;--neon2:#ff0080;--txt:#8aa0b5;--w:rgba(0,240,255,.18);--trans:.3s ease}
+html{scroll-behavior:smooth}
+body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden}
+/* grid bg */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,240,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,.04) 1px,transparent 1px);background-size:46px 46px;z-index:0;mask-image:radial-gradient(circle at 50% 0%,#000 30%,transparent 80%)}
+.scan{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(transparent,transparent 50%,rgba(0,240,255,.02) 50%);background-size:100% 4px}
+.wrap{position:relative;z-index:2}
+.badge{position:fixed;top:14px;right:14px;background:rgba(0,0,0,.7);border:1px solid var(--neon);border-radius:2px;padding:5px 12px;font-size:.72rem;color:var(--neon);z-index:9999;font-weight:600}
+.font-o{font-family:'Orbitron',sans-serif}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--w);position:sticky;top:0;background:rgba(4,6,12,.85);backdrop-filter:blur(8px);z-index:100}
+.brand{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.1rem;color:#fff;letter-spacing:.05em}
+.brand span{color:var(--neon)}
+.links{display:flex;gap:28px;font-size:.95rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.links a{transition:var(--trans)}.links a:hover{color:var(--neon);text-shadow:0 0 8px var(--neon)}
+.ncta{font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:700;color:var(--bg);background:var(--neon);padding:10px 20px;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:var(--trans)}
+.ncta:hover{box-shadow:0 0 24px var(--neon)}
+/* hero */
+.hero{max-width:1200px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--neon);border:1px solid var(--w);padding:6px 14px;margin-bottom:24px}
+.tag .d{width:8px;height:8px;background:var(--neon2);box-shadow:0 0 10px var(--neon2);animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:.2}}
+h1{font-family:'Orbitron',sans-serif;font-size:clamp(2.6rem,6vw,4.6rem);color:#fff;line-height:1.02;letter-spacing:-.01em;text-transform:uppercase}
+h1 .n{color:var(--neon);text-shadow:0 0 24px rgba(0,240,255,.6)}
+.hsub{font-size:1.1rem;line-height:1.6;margin-top:24px;max-width:520px}
+.hbtns{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.btn1{font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;color:var(--bg);background:var(--neon);padding:14px 28px;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:var(--trans)}
+.btn1:hover{box-shadow:0 0 30px var(--neon);transform:translateY(-2px)}
+.btn2{font-size:1rem;font-weight:600;color:var(--neon);border:1px solid var(--neon);padding:14px 28px;transition:var(--trans)}
+.btn2:hover{background:rgba(0,240,255,.08)}
+/* hud panel */
+.hud{border:1px solid var(--w);background:rgba(0,240,255,.03);padding:28px;position:relative}
+.hud::before,.hud::after{content:'';position:absolute;width:16px;height:16px;border:2px solid var(--neon)}
+.hud::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.hud::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.hud-title{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.2em;color:var(--neon);margin-bottom:20px;text-transform:uppercase}
+.hud-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(0,240,255,.1)}
+.hud-row:last-child{border:0}
+.hud-row .l{font-size:.9rem;text-transform:uppercase;letter-spacing:.05em}
+.hud-row .v{font-family:'Orbitron',sans-serif;font-size:1.4rem;color:#fff;font-weight:700}
+.hud-row .v span{color:var(--neon)}
+/* services */
+.sec{max-width:1200px;margin:60px auto 0;padding:0 40px}
+.sechead{margin-bottom:36px}
+.sechead .lbl{font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;color:var(--neon2)}
+.sechead h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-top:8px;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--w)}
+.card{background:var(--bg);padding:30px 26px;transition:var(--trans);position:relative}
+.card:hover{background:rgba(0,240,255,.05)}
+.card .n{font-family:'Orbitron',sans-serif;font-size:.8rem;color:var(--neon);letter-spacing:.1em}
+.card .ico{font-size:1.6rem;color:var(--neon);margin:16px 0;text-shadow:0 0 12px rgba(0,240,255,.5)}
+.card h3{font-size:1.3rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.02em;margin-bottom:8px}
+.card p{font-size:.92rem;line-height:1.5}
+.card:hover .ico{transform:scale(1.15)}
+/* cta */
+.ctabox{max-width:1200px;margin:70px auto;padding:60px 40px;border:1px solid var(--w);text-align:center;background:rgba(0,240,255,.03)}
+.ctabox h2{font-family:'Orbitron',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;text-transform:uppercase}
+.ctabox p{margin:14px 0 28px;font-size:1.05rem}
+.rv{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:880px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.links{display:none}}
+</style>
+</head>
+<body>
+<div class="scan"></div>
+<div class="badge">Tasarım 6 — Neon Cyber</div>
+<div class="wrap">
+<nav>
+  <div class="brand">ÇİÇEK<span>//</span>OTO</div>
+  <div class="links"><a href="#">Hizmetler</a><a href="#">Hakkımızda</a><a href="#">Galeri</a><a href="#">İletişim</a></div>
+  <a href="#" class="ncta">Randevu Al</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="tag"><span class="d"></span> System Online · Başakşehir</div>
+    <h1>Her Marka<br>Her Model<br><span class="n">Doğru Servis</span></h1>
+    <p class="hsub">VW'dan BMW'ye 30'dan fazla markada bakım ve onarım. Orijinal parça, garantili işçilik, şeffaf fiyat. 25 yıldır aynı ekip.</p>
+    <div class="hbtns">
+      <a href="#" class="btn1">Randevu Al →</a>
+      <a href="#" class="btn2">0212 549 17 63</a>
+    </div>
+  </div>
+  <div class="hud">
+    <div class="hud-title">// Performans Verileri</div>
+    <div class="hud-row"><span class="l">Yıl Deneyim</span><span class="v">25<span>+</span></span></div>
+    <div class="hud-row"><span class="l">Mutlu Müşteri</span><span class="v">5K<span>+</span></span></div>
+    <div class="hud-row"><span class="l">Araç Markası</span><span class="v">30<span>+</span></span></div>
+    <div class="hud-row"><span class="l">Memnuniyet</span><span class="v"><span>%</span>98</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sechead rv"><div class="lbl">// Hizmet Modülleri</div><h2>Tüm Servis İhtiyaçları</h2></div>
+  <div class="grid">
+    <div class="card rv"><div class="n">01</div><div class="ico"><i class="fas fa-oil-can"></i></div><h3>Periyodik Bakım</h3><p>Yağ, filtre ve km bakımları fabrika reçetesiyle.</p></div>
+    <div class="card rv"><div class="n">02</div><div class="ico"><i class="fas fa-cog"></i></div><h3>Motor Tamiri</h3><p>Timing, silindir kapağı, komple revizyon.</p></div>
+    <div class="card rv"><div class="n">03</div><div class="ico"><i class="fas fa-gears"></i></div><h3>DSG Şanzıman</h3><p>VW Grup DSG sistemlerinde uzman servis.</p></div>
+    <div class="card rv"><div class="n">04</div><div class="ico"><i class="fas fa-bolt"></i></div><h3>Elektrik</h3><p>OBD tanı, ECU programlama, arıza giderme.</p></div>
+    <div class="card rv"><div class="n">05</div><div class="ico"><i class="fas fa-snowflake"></i></div><h3>Klima Bakımı</h3><p>Gaz dolumu, kompresör, performans testi.</p></div>
+    <div class="card rv"><div class="n">06</div><div class="ico"><i class="fas fa-paint-roller"></i></div><h3>Kaporta & Boya</h3><p>Kaza onarımı, spot boya, profesyonel boyama.</p></div>
+  </div>
+</section>
+
+<div class="ctabox rv">
+  <h2>Sistemi Başlat</h2>
+  <p>Randevunuzu online alın, 2 saat içinde sizi arayalım.</p>
+  <a href="#" class="btn1">Hemen Randevu Al →</a>
+</div>
+</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%6*55)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

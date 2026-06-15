@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tasarım 10 — Racing Sport</title>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Saira:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0d10;--bg2:#141519;--red:#e10600;--txt:#9a9ca3;--w:rgba(255,255,255,.07);--trans:.3s cubic-bezier(.4,0,.2,1)}
+html{scroll-behavior:smooth}
+body{font-family:'Saira',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden}
+.cond{font-family:'Saira Condensed',sans-serif}
+.badge{position:fixed;top:14px;right:14px;background:var(--red);color:#fff;padding:5px 13px;font-size:.72rem;font-weight:700;z-index:9999;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+/* checker accent */
+.stripe{height:5px;background:repeating-linear-gradient(45deg,var(--red) 0 12px,#0c0d10 12px 24px)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;border-bottom:1px solid var(--w);position:sticky;top:0;background:rgba(12,13,16,.92);backdrop-filter:blur(8px);z-index:100}
+.brand{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.4rem;color:#fff;text-transform:uppercase;letter-spacing:.02em;font-style:italic}
+.brand span{color:var(--red)}
+.links{display:flex;gap:26px;font-size:.9rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.links a{transition:var(--trans)}.links a:hover{color:var(--red)}
+.ncta{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:.92rem;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:var(--red);padding:11px 24px;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:var(--trans)}
+.ncta:hover{box-shadow:0 0 24px rgba(225,6,0,.5)}
+/* hero */
+.hero{position:relative;padding:80px 40px;border-bottom:1px solid var(--w);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-10%;width:60%;height:200%;background:radial-gradient(circle,rgba(225,6,0,.12),transparent 60%);pointer-events:none}
+.hwrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:center;position:relative}
+.tag{display:inline-flex;align-items:center;gap:10px;font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);margin-bottom:22px}
+.tag::before{content:'';width:30px;height:3px;background:var(--red)}
+h1{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:clamp(3rem,9vw,7rem);color:#fff;line-height:.92;text-transform:uppercase;font-style:italic;letter-spacing:-.01em}
+h1 .r{color:var(--red)}
+.hsub{font-size:1.1rem;line-height:1.55;margin-top:24px;max-width:520px}
+.hbtns{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.btn1{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:var(--red);padding:15px 34px;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:var(--trans)}
+.btn1:hover{box-shadow:0 0 30px rgba(225,6,0,.5);transform:translateY(-2px)}
+.btn2{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;color:#fff;border:1px solid var(--w);padding:15px 34px;transition:var(--trans)}
+.btn2:hover{border-color:var(--red);color:var(--red)}
+/* speedo panel */
+.panel{background:var(--bg2);border:1px solid var(--w);padding:8px}
+.panel-h{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.15em;color:var(--red);padding:14px 18px;border-bottom:1px solid var(--w)}
+.gauge{display:flex;align-items:baseline;justify-content:space-between;padding:18px;border-bottom:1px solid var(--w)}
+.gauge:last-child{border:0}
+.gauge .l{font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.gauge .v{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:2.2rem;color:#fff;font-style:italic}
+.gauge .v span{color:var(--red)}
+/* services */
+.sec{max-width:1200px;margin:60px auto 0;padding:0 40px}
+.sechead{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px}
+.sechead .lbl{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.sechead h2{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.4rem);color:#fff;text-transform:uppercase;font-style:italic;line-height:1}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--bg2);border:1px solid var(--w);padding:28px 26px;transition:var(--trans);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);transform:scaleY(0);transform-origin:top;transition:var(--trans)}
+.card:hover{transform:translateY(-5px);background:#181a1f}
+.card:hover::before{transform:scaleY(1)}
+.card .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.card .n{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.6rem;color:rgba(255,255,255,.1);font-style:italic}
+.card .ico{font-size:1.4rem;color:var(--red)}
+.card h3{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:1.4rem;color:#fff;text-transform:uppercase;margin-bottom:8px}
+.card p{font-size:.92rem;line-height:1.5}
+/* cta */
+.ctabox{max-width:1200px;margin:70px auto;padding:0;border:1px solid var(--w);overflow:hidden}
+.ctabox .inner{padding:56px 40px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(225,6,0,.12),transparent 60%)}
+.ctabox h2{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.6rem);color:#fff;text-transform:uppercase;font-style:italic}
+.ctabox p{margin:14px 0 28px;font-size:1.05rem}
+.rv{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:880px){.hwrap{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.links{display:none}}
+</style>
+</head>
+<body>
+<div class="badge">Tasarım 10 — Racing Sport</div>
+<div class="stripe"></div>
+<nav>
+  <div class="brand">ÇİÇEK<span>OTO</span></div>
+  <div class="links"><a href="#">Hizmetler</a><a href="#">Hakkımızda</a><a href="#">Galeri</a><a href="#">İletişim</a></div>
+  <a href="#" class="ncta">Randevu Al</a>
+</nav>
+
+<section class="hero">
+  <div class="hwrap">
+    <div>
+      <div class="tag">Başakşehir · 2001'den beri</div>
+      <h1 class="rv in">Her Marka<br>Her Model<br><span class="r">Doğru Servis</span></h1>
+      <p class="hsub rv in">VW'dan BMW'ye 30'dan fazla markada bakım ve onarım. Orijinal parça, garantili işçilik, şeffaf fiyat. Pistteki kadar disiplinli bir atölye.</p>
+      <div class="hbtns rv in">
+        <a href="#" class="btn1">Randevu Al →</a>
+        <a href="#" class="btn2"><i class="fas fa-phone"></i> 0212 549 17 63</a>
+      </div>
+    </div>
+    <div class="panel rv in">
+      <div class="panel-h">// Atölye Telemetrisi</div>
+      <div class="gauge"><span class="l">Yıl Deneyim</span><span class="v">25<span>+</span></span></div>
+      <div class="gauge"><span class="l">Müşteri</span><span class="v">5K<span>+</span></span></div>
+      <div class="gauge"><span class="l">Marka</span><span class="v">30<span>+</span></span></div>
+      <div class="gauge"><span class="l">Memnuniyet</span><span class="v"><span>%</span>98</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sechead rv"><div><div class="lbl">// Hizmetlerimiz</div><h2>Tüm Servis İhtiyaçları</h2></div></div>
+  <div class="grid">
+    <div class="card rv"><div class="top"><div class="n">01</div><i class="fas fa-oil-can ico"></i></div><h3>Periyodik Bakım</h3><p>Yağ, filtre ve km bakımları fabrika reçetesiyle.</p></div>
+    <div class="card rv"><div class="top"><div class="n">02</div><i class="fas fa-cog ico"></i></div><h3>Motor Tamiri</h3><p>Timing, silindir kapağı, komple revizyon.</p></div>
+    <div class="card rv"><div class="top"><div class="n">03</div><i class="fas fa-gears ico"></i></div><h3>DSG Şanzıman</h3><p>VW Grup DSG sistemlerinde uzman servis.</p></div>
+    <div class="card rv"><div class="top"><div class="n">04</div><i class="fas fa-bolt ico"></i></div><h3>Elektrik</h3><p>OBD tanı, ECU programlama, arıza giderme.</p></div>
+    <div class="card rv"><div class="top"><div class="n">05</div><i class="fas fa-snowflake ico"></i></div><h3>Klima Bakımı</h3><p>Gaz dolumu, kompresör, performans testi.</p></div>
+    <div class="card rv"><div class="top"><div class="n">06</div><i class="fas fa-paint-roller ico"></i></div><h3>Kaporta & Boya</h3><p>Kaza onarımı, spot boya, profesyonel boyama.</p></div>
+  </div>
+</section>
+
+<div class="ctabox rv">
+  <div class="inner">
+    <h2>Aracını Yarışa Hazırla</h2>
+    <p>Randevunu online al, 2 saat içinde seni arayalım.</p>
+    <a href="#" class="btn1">Hemen Randevu Al →</a>
+  </div>
+</div>
+<div class="stripe"></div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv:not(.in)').forEach((el,i)=>{el.style.transitionDelay=(i%6*55)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Çiçek Otomotiv — Tasarım Galerisi</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070809;--card:#13151a;--accent:#d4af37;--txt:#9aa0aa;--w:rgba(255,255,255,.08);--trans:.35s cubic-bezier(.22,1,.36,1)}
+html{scroll-behavior:smooth}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% -10%,rgba(212,175,55,.08),transparent 50%)}
+header{position:relative;z-index:2;text-align:center;padding:70px 24px 30px;max-width:760px;margin:0 auto}
+.kick{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;font-weight:500;color:var(--accent);border:1px solid var(--w);padding:7px 16px;border-radius:99px;margin-bottom:24px}
+.kick .d{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+h1{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;color:#fff;letter-spacing:-.03em;line-height:1.05}
+h1 .g{color:var(--accent)}
+.sub{font-size:1.05rem;margin-top:18px;line-height:1.6}
+.note{font-size:.85rem;margin-top:20px;color:#6b7180;background:var(--card);border:1px solid var(--w);border-radius:14px;padding:14px 18px;display:inline-flex;gap:10px;align-items:center;text-align:left}
+.note i{color:var(--accent)}
+.grid{position:relative;z-index:2;max-width:1240px;margin:50px auto 80px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--w);border-radius:20px;overflow:hidden;transition:var(--trans);text-decoration:none;display:flex;flex-direction:column;opacity:0;transform:translateY(28px)}
+.card.in{opacity:1;transform:none}
+.card:hover{transform:translateY(-8px);border-color:rgba(212,175,55,.4);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.thumb{height:150px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--w)}
+.thumb .big{font-size:2.4rem;font-weight:800;color:rgba(255,255,255,.85);letter-spacing:-.02em;z-index:2}
+.thumb .mini{position:absolute;bottom:10px;right:12px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);z-index:2}
+.body{padding:22px;flex:1;display:flex;flex-direction:column}
+.num{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.card h3{font-size:1.2rem;font-weight:700;color:#fff;margin:6px 0 8px}
+.card p{font-size:.86rem;line-height:1.55;flex:1}
+.open{margin-top:16px;font-size:.85rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:8px;transition:var(--trans)}
+.card:hover .open{gap:13px}
+/* per-theme thumb backgrounds */
+.t1{background:linear-gradient(135deg,#0a0a0a,#2a2a2a)}
+.t2{background:linear-gradient(135deg,#0a1530,#1e3a8a)}
+.t3{background:linear-gradient(135deg,#1a1a1d,#c2410c)}
+.t4{background:linear-gradient(135deg,#f3ede1,#c2a36b);}
+.t4 .big{color:#2b2118}.t4 .mini{color:rgba(43,33,24,.55)}
+.t5{background:linear-gradient(135deg,#6366f1,#22d3ee,#a855f7)}
+.t6{background:linear-gradient(135deg,#04060c,#00343a);box-shadow:inset 0 0 40px rgba(0,240,255,.3)}
+.t6 .big{color:#00f0ff;text-shadow:0 0 18px rgba(0,240,255,.6)}
+.t7{background:linear-gradient(135deg,#f6f6f4,#dfe6ff)}
+.t7 .big{color:#1453ff}.t7 .mini{color:rgba(20,20,30,.5)}
+.t8{background:repeating-linear-gradient(45deg,#f5f230 0 18px,#0a0a0a 18px 36px)}
+.t8 .big{color:#ff3b00;-webkit-text-stroke:1px #0a0a0a}
+.t9{background:linear-gradient(135deg,#7c3aed,#ec4899,#3b82f6)}
+.t10{background:linear-gradient(135deg,#0c0d10,#e10600)}
+.t11{background:linear-gradient(135deg,#1f7a6d,#d9622b)}
+.t11 .big{color:#fbf6ea}
+.t12{background:linear-gradient(160deg,#161922,#5eead4)}
+.t12 .big{color:#0e1015}
+.t13{background:linear-gradient(135deg,#13110e,#c2a36b)}
+.t14{background:linear-gradient(135deg,#0a0a0c,#d4af37)}
+.t15{background:linear-gradient(135deg,#15171b,#c4f542)}
+.t15 .big{color:#0b0c0e}
+.foot{position:relative;z-index:2;text-align:center;padding:0 24px 60px;font-size:.85rem;color:#5a606b}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<header>
+  <div class="kick"><span class="d"></span> Çiçek Otomotiv · Arayüz Konseptleri</div>
+  <h1>14 Tasarım Teması<br><span class="g">Beğendiğini Seç</span></h1>
+  <p class="sub">Her tema modern, animasyonlu ve markaya uyarlanmış. Bir kartı aç, beğen, hangisini tam siteye dönüştürelim söyle.</p>
+  <div class="note"><i class="fas fa-circle-info"></i> Bunlar landing önizlemeleri (nav + hero + hizmetler + CTA). Seçtiğin tema tüm bölümlerle (form, galeri, yorumlar, SSS, harita) eksiksiz siteye genişletilir.</div>
+</header>
+
+<div class="grid" id="grid">
+  <a class="card" href="1-siyah-krom.html"><div class="thumb t1"><span class="big">01</span><span class="mini">Editorial Siyah</span></div><div class="body"><div class="num">Tasarım 01</div><h3>Editorial Siyah-Krom</h3><p>Çizgisel grid, krom kontur tipografi, marquee şeridi. Sade ve sofistike.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="2-lacivert-mavi.html"><div class="thumb t2"><span class="big">02</span><span class="mini">Lacivert Mavi</span></div><div class="body"><div class="num">Tasarım 02</div><h3>Lacivert & Mavi</h3><p>Kurumsal, güven veren mavi tonları. Teknolojik ama sıcak.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="3-antrasit-turuncu.html"><div class="thumb t3"><span class="big">03</span><span class="mini">Antrasit Turuncu</span></div><div class="body"><div class="num">Tasarım 03</div><h3>Antrasit & Turuncu</h3><p>Endüstriyel his, enerjik turuncu aksan. Servis/atölye ruhu.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="4-beyaz-altin.html"><div class="thumb t4"><span class="big">04</span><span class="mini">Beyaz Altın</span></div><div class="body"><div class="num">Tasarım 04</div><h3>Beyaz & Altın</h3><p>Aydınlık, premium, ferah. Lüks hissi açık zeminle.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+
+  <a class="card" href="5-glass-aurora.html"><div class="thumb t5"><span class="big">05</span><span class="mini">Glass Aurora</span></div><div class="body"><div class="num">Tasarım 05 · Yeni</div><h3>Glass Aurora</h3><p>Cam efektli (glassmorphism) kartlar, hareketli aurora ışıkları, gradyan başlık.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="6-neon-cyber.html"><div class="thumb t6"><span class="big">06</span><span class="mini">Neon Cyber</span></div><div class="body"><div class="num">Tasarım 06 · Yeni</div><h3>Neon Cyber HUD</h3><p>Karanlık, neon, teknolojik. Gösterge paneli (HUD) ve grid arka plan.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="7-minimal-light.html"><div class="thumb t7"><span class="big">07</span><span class="mini">Minimal Light</span></div><div class="body"><div class="num">Tasarım 07 · Yeni</div><h3>Minimal Light</h3><p>Bol beyaz alan, temiz tipografi, yumuşak gölgeler. Kurumsal ve ferah.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="8-brutalist.html"><div class="thumb t8"><span class="big">08</span><span class="mini">Brutalist</span></div><div class="body"><div class="num">Tasarım 08 · Yeni</div><h3>Brutalist Bold</h3><p>Kalın çerçeveler, sert gölgeler, iri tipografi. Dikkat çeken, cesur.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="9-gradient-mesh.html"><div class="thumb t9"><span class="big">09</span><span class="mini">Gradient Mesh</span></div><div class="body"><div class="num">Tasarım 09 · Yeni</div><h3>Gradient Mesh</h3><p>Yumuşak renk geçişleri, hareketli mesh ışıkları. Modern SaaS hissi.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="10-racing-sport.html"><div class="thumb t10"><span class="big">10</span><span class="mini">Racing Sport</span></div><div class="body"><div class="num">Tasarım 10 · Yeni</div><h3>Racing Sport</h3><p>F1 ruhu, kırmızı aksan, dama deseni, telemetri paneli. Performans odaklı.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="11-retro-garage.html"><div class="thumb t11"><span class="big">11</span><span class="mini">Retro Garage</span></div><div class="body"><div class="num">Tasarım 11 · Yeni</div><h3>Retro Garage</h3><p>Vintage 70'ler garaj estetiği, sıcak tonlar, dönen amblem. Karakterli.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="12-3d-depth.html"><div class="thumb t12"><span class="big">12</span><span class="mini">3D Depth</span></div><div class="body"><div class="num">Tasarım 12 · Yeni</div><h3>3D Depth</h3><p>Derinlik hissi, fareyle eğilen kartlar (parallax tilt), yüzen elemanlar.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="13-editorial-luxe.html"><div class="thumb t13"><span class="big">13</span><span class="mini">Editorial Luxe</span></div><div class="body"><div class="num">Tasarım 13 · Yeni</div><h3>Editorial Luxe</h3><p>Serif tipografi, dergi düzeni, altın detaylar. Zarif ve prestijli.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="14-dark-luxury.html"><div class="thumb t14"><span class="big">14</span><span class="mini">Dark Luxury</span></div><div class="body"><div class="num">Tasarım 14 · Yeni</div><h3>Dark Luxury Gold</h3><p>Koyu lüks, altın gradyan, premium kartlar. Markaya en sadık varyasyon.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+  <a class="card" href="15-bento-grid.html"><div class="thumb t15"><span class="big">15</span><span class="mini">Bento Grid</span></div><div class="body"><div class="num">Tasarım 15 · Yeni</div><h3>Bento Grid Mosaic</h3><p>Modüler kutucuk düzeni (bento), renkli vurgular. Apple/dashboard estetiği.</p><span class="open">Aç <i class="fas fa-arrow-right"></i></span></div></a>
+</div>
+
+<div class="foot">Beğendiğin temanın numarasını söyle (örn. "9'u beğendim") — onu tüm bölümlerle gerçek siteye dönüştüreyim.</div>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.card').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
