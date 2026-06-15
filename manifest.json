@@ -1,0 +1,40 @@
+{
+  "name": "Çiçek Otomotiv",
+  "short_name": "Çiçek Oto",
+  "description": "Her marka ve modelde uzman oto servis. Başakşehir, İstanbul.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1321",
+  "theme_color": "#C8A84B",
+  "orientation": "portrait-primary",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Randevu Al",
+      "short_name": "Randevu",
+      "url": "/#randevu",
+      "icons": [{ "src": "img/favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Bizi Ara",
+      "short_name": "Ara",
+      "url": "tel:02125491763",
+      "icons": [{ "src": "img/favicon.svg", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["automotive", "business", "utilities"]
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tasarım 2 — Dashboard Lacivert</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#03090F; --panel:#071422; --card:#0C1E30; --border:rgba(14,165,233,.12);
+  --blue:#0EA5E9; --blue2:#38BDF8; --blue-dim:rgba(14,165,233,.1); --blue-glow:rgba(14,165,233,.25);
+  --t:rgba(255,255,255,.55); --t2:rgba(255,255,255,.28); --w:#fff;
+  --green:#22D3A4; --amber:#F59E0B;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden;display:grid;grid-template-columns:220px 1fr;grid-template-rows:auto 1fr;min-height:100vh}
+
+.badge{position:fixed;top:14px;right:14px;background:rgba(3,9,15,.9);border:1px solid var(--blue);border-radius:4px;padding:5px 12px;font-size:.7rem;color:var(--blue);z-index:9999}
+
+/* ── SIDEBAR ── */
+aside{grid-row:1/3;background:var(--panel);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:0}
+.sidebar-brand{padding:20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.sb-ico{width:32px;height:32px;border-radius:6px;background:var(--blue-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:.75rem}
+.sb-name{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--w)}
+.sidebar-section{padding:16px 12px 8px;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--t2)}
+.sb-link{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;font-size:.78rem;color:var(--t);margin:2px 8px;cursor:pointer;transition:all .2s}
+.sb-link:hover,.sb-link.active{background:var(--blue-dim);color:var(--w)}
+.sb-link.active{border-left:2px solid var(--blue);padding-left:10px}
+.sb-link i{width:16px;text-align:center;font-size:.75rem;color:var(--blue)}
+.sb-divider{height:1px;background:var(--border);margin:12px 8px}
+.sb-status{margin:auto 8px 16px;padding:12px;background:rgba(34,211,164,.07);border:1px solid rgba(34,211,164,.2);border-radius:8px}
+.sb-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);display:inline-block;margin-right:6px}
+.sb-status p{font-size:.7rem;color:rgba(34,211,164,.8)}
+.sb-status .sb-hours{font-size:.65rem;color:var(--t2);margin-top:3px}
+
+/* ── TOPBAR ── */
+header{grid-column:2;background:var(--panel);border-bottom:1px solid var(--border);padding:0 28px;height:52px;display:flex;align-items:center;justify-content:space-between}
+.h-right{display:flex;align-items:center;gap:12px}
+.h-badge{font-size:.68rem;font-weight:600;padding:4px 10px;border-radius:3px;background:var(--blue-dim);border:1px solid var(--border);color:var(--blue)}
+.h-cta{font-size:.72rem;font-weight:600;padding:7px 16px;background:var(--blue);color:#fff;border-radius:5px;border:none;font-family:'Inter';cursor:pointer;display:flex;align-items:center;gap:6px}
+
+/* ── MAIN ── */
+main{grid-column:2;padding:24px 28px;overflow-y:auto}
+
+/* metrics row */
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 20px}
+.m-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.m-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--t2)}
+.m-ico{width:28px;height:28px;border-radius:6px;background:var(--blue-dim);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:.68rem}
+.m-val{font-size:1.8rem;font-weight:700;color:var(--w);line-height:1}
+.m-sub{font-size:.68rem;color:var(--t2);margin-top:4px}
+.m-badge{font-size:.6rem;font-weight:700;padding:2px 6px;border-radius:3px;margin-left:4px}
+.pos{background:rgba(34,211,164,.12);color:var(--green)}
+
+/* content grid */
+.content-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.panel-head{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.ph-title{font-size:.78rem;font-weight:600;color:var(--w);display:flex;align-items:center;gap:8px}
+.ph-title i{color:var(--blue);font-size:.72rem}
+.ph-action{font-size:.68rem;color:var(--blue);cursor:pointer}
+.svc-table{width:100%;border-collapse:collapse}
+.svc-table th{text-align:left;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);padding:10px 20px;border-bottom:1px solid var(--border)}
+.svc-table td{padding:13px 20px;border-bottom:1px solid rgba(14,165,233,.06);font-size:.78rem}
+.svc-table tr:last-child td{border-bottom:none}
+.svc-table tr:hover td{background:rgba(14,165,233,.04)}
+.td-name{color:var(--w);font-weight:500;display:flex;align-items:center;gap:10px}
+.td-ico{width:26px;height:26px;border-radius:5px;background:var(--blue-dim);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:.62rem;flex-shrink:0}
+.td-dur{color:var(--t2)}
+.status-dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:6px}
+.dot-blue{background:var(--blue);box-shadow:0 0 5px var(--blue)}
+.dot-green{background:var(--green)}
+.dot-amber{background:var(--amber)}
+.td-status{font-size:.68rem;font-weight:500}
+
+.right-panel{display:flex;flex-direction:column;gap:16px}
+.quick-cta{background:linear-gradient(135deg,#0369A1,#0EA5E9);border-radius:10px;padding:20px;position:relative;overflow:hidden}
+.quick-cta::before{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.07)}
+.qc-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.qc-title{font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:14px}
+.qc-btn{display:block;background:#fff;color:#0369A1;font-size:.75rem;font-weight:700;font-family:'Inter';padding:9px;border-radius:6px;text-align:center;border:none;cursor:pointer;width:100%}
+
+.info-panel{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.ip-head{padding:14px 16px;border-bottom:1px solid var(--border);font-size:.72rem;font-weight:600;color:var(--w);display:flex;align-items:center;gap:6px}
+.ip-head i{color:var(--blue);font-size:.68rem}
+.ip-row{padding:12px 16px;border-bottom:1px solid rgba(14,165,233,.06);display:flex;align-items:center;gap:12px}
+.ip-row:last-child{border-bottom:none}
+.ip-ico{width:30px;height:30px;border-radius:6px;background:var(--blue-dim);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:.65rem;flex-shrink:0}
+.ip-body h4{font-size:.75rem;font-weight:600;color:var(--w)}
+.ip-body p{font-size:.68rem;color:var(--t2);margin-top:1px}
+
+.feature-list{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+.fl-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(14,165,233,.06)}
+.fl-item:last-child{border-bottom:none}
+.fl-check{width:18px;height:18px;border-radius:4px;background:rgba(34,211,164,.12);border:1px solid rgba(34,211,164,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fl-check i{font-size:.52rem;color:var(--green)}
+.fl-item span{font-size:.75rem;color:var(--t)}
+</style>
+</head>
+<body>
+<div class="badge">Tasarım 2 — Dashboard Lacivert</div>
+
+<aside>
+  <div class="sidebar-brand">
+    <div class="sb-ico"><i class="fas fa-gear"></i></div>
+    <div class="sb-name">Çiçek Oto</div>
+  </div>
+  <div class="sidebar-section">Ana Menü</div>
+  <div class="sb-link active"><i class="fas fa-gauge-high"></i> Genel Bakış</div>
+  <div class="sb-link"><i class="fas fa-wrench"></i> Hizmetler</div>
+  <div class="sb-link"><i class="fas fa-calendar-check"></i> Randevu Al</div>
+  <div class="sb-link"><i class="fas fa-images"></i> Galeri</div>
+  <div class="sb-divider"></div>
+  <div class="sidebar-section">Bilgi</div>
+  <div class="sb-link"><i class="fas fa-star"></i> Müşteri Yorumları</div>
+  <div class="sb-link"><i class="fas fa-circle-question"></i> Sık Sorulan</div>
+  <div class="sb-link"><i class="fas fa-location-dot"></i> Hakkımızda</div>
+  <div class="sb-link"><i class="fas fa-phone"></i> İletişim</div>
+  <div class="sb-divider"></div>
+  <div class="sb-status">
+    <p><span class="sb-dot"></span>Servis Açık</p>
+    <p class="sb-hours">Pzt–Cmt · 09:00–19:00</p>
+  </div>
+</aside>
+
+<header>
+  <div style="font-size:.75rem;color:var(--t2)">Çiçek Otomotiv &rsaquo; Ana Sayfa</div>
+  <div class="h-right">
+    <span class="h-badge">2001'den Bu Yana</span>
+    <span class="h-badge">Başakşehir, İstanbul</span>
+    <button class="h-cta"><i class="fas fa-phone"></i> 0212 549 17 63</button>
+  </div>
+</header>
+
+<main>
+  <div class="metric-row">
+    <div class="metric">
+      <div class="m-top"><div class="m-label">Deneyim</div><div class="m-ico"><i class="fas fa-calendar"></i></div></div>
+      <div class="m-val">25<span style="font-size:1rem;color:var(--blue)">+</span></div>
+      <div class="m-sub">Yıl<span class="m-badge pos">2001'den</span></div>
+    </div>
+    <div class="metric">
+      <div class="m-top"><div class="m-label">Müşteri</div><div class="m-ico"><i class="fas fa-users"></i></div></div>
+      <div class="m-val">5K<span style="font-size:1rem;color:var(--blue)">+</span></div>
+      <div class="m-sub">Mutlu müşteri</div>
+    </div>
+    <div class="metric">
+      <div class="m-top"><div class="m-label">Markalar</div><div class="m-ico"><i class="fas fa-car"></i></div></div>
+      <div class="m-val">30<span style="font-size:1rem;color:var(--blue)">+</span></div>
+      <div class="m-sub">Araç markası</div>
+    </div>
+    <div class="metric">
+      <div class="m-top"><div class="m-label">Memnuniyet</div><div class="m-ico"><i class="fas fa-star"></i></div></div>
+      <div class="m-val">%98</div>
+      <div class="m-sub">Müşteri memnuniyeti</div>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <div>
+      <div class="panel">
+        <div class="panel-head">
+          <div class="ph-title"><i class="fas fa-list-check"></i> Sunduğumuz Hizmetler</div>
+          <div class="ph-action">Randevu Al →</div>
+        </div>
+        <table class="svc-table">
+          <thead><tr><th>Hizmet</th><th>Süre</th><th>Garanti</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td><div class="td-name"><div class="td-ico"><i class="fas fa-oil-can"></i></div>Periyodik Bakım</div></td><td class="td-dur">30–90 dk</td><td class="td-dur">3 ay</td><td class="td-status"><span class="status-dot dot-green"></span>Müsait</td></tr>
+            <tr><td><div class="td-name"><div class="td-ico"><i class="fas fa-gears"></i></div>DSG Şanzıman</div></td><td class="td-dur">1–2 gün</td><td class="td-dur">12 ay</td><td class="td-status"><span class="status-dot dot-blue"></span>Uzman</td></tr>
+            <tr><td><div class="td-name"><div class="td-ico"><i class="fas fa-cog"></i></div>Motor Tamiri</div></td><td class="td-dur">1–3 gün</td><td class="td-dur">6 ay</td><td class="td-status"><span class="status-dot dot-green"></span>Müsait</td></tr>
+            <tr><td><div class="td-name"><div class="td-ico"><i class="fas fa-circle-dot"></i></div>Fren Sistemi</div></td><td class="td-dur">2–4 saat</td><td class="td-dur">6 ay</td><td class="td-status"><span class="status-dot dot-green"></span>Müsait</td></tr>
+            <tr><td><div class="td-name"><div class="td-ico"><i class="fas fa-bolt"></i></div>Elektrik & Elektronik</div></td><td class="td-dur">1–6 saat</td><td class="td-dur">3 ay</td><td class="td-status"><span class="status-dot dot-amber"></span>Teşhis Gerekli</td></tr>
+            <tr><td><div class="td-name"><div class="td-ico"><i class="fas fa-snowflake"></i></div>Klima Bakımı</div></td><td class="td-dur">1–2 saat</td><td class="td-dur">3 ay</td><td class="td-status"><span class="status-dot dot-green"></span>Müsait</td></tr>
+            <tr><td><div class="td-name"><div class="td-ico"><i class="fas fa-paint-roller"></i></div>Kaporta & Boya</div></td><td class="td-dur">1–5 gün</td><td class="td-dur">12 ay</td><td class="td-status"><span class="status-dot dot-green"></span>Müsait</td></tr>
+            <tr><td><div class="td-name"><div class="td-ico"><i class="fas fa-car-burst"></i></div>PDR Göçük</div></td><td class="td-dur">2–4 saat</td><td class="td-dur">Ömür boyu</td><td class="td-status"><span class="status-dot dot-blue"></span>Uzman</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="quick-cta">
+        <div class="qc-label">Hızlı Erişim</div>
+        <div class="qc-title">Randevunuzu<br>Hemen Alın</div>
+        <button class="qc-btn"><i class="fas fa-calendar-check"></i> Randevu Al</button>
+      </div>
+      <div class="info-panel">
+        <div class="ip-head"><i class="fas fa-building"></i> Servis Bilgileri</div>
+        <div class="ip-row"><div class="ip-ico"><i class="fas fa-location-dot"></i></div><div class="ip-body"><h4>Adres</h4><p>Başakşehir, İstanbul</p></div></div>
+        <div class="ip-row"><div class="ip-ico"><i class="fas fa-clock"></i></div><div class="ip-body"><h4>Çalışma Saatleri</h4><p>Pzt–Cmt · 09:00–19:00</p></div></div>
+        <div class="ip-row"><div class="ip-ico"><i class="fas fa-phone"></i></div><div class="ip-body"><h4>Telefon</h4><p>0212 549 17 63</p></div></div>
+        <div class="ip-row"><div class="ip-ico"><i class="fab fa-whatsapp"></i></div><div class="ip-body"><h4>WhatsApp</h4><p>Hızlı iletişim</p></div></div>
+      </div>
+      <div class="feature-list">
+        <div class="fl-item"><div class="fl-check"><i class="fas fa-check"></i></div><span>OEM Orijinal Parça</span></div>
+        <div class="fl-item"><div class="fl-check"><i class="fas fa-check"></i></div><span>İşçilik Garantisi</span></div>
+        <div class="fl-item"><div class="fl-check"><i class="fas fa-check"></i></div><span>Şeffaf Fiyat Politikası</span></div>
+        <div class="fl-item"><div class="fl-check"><i class="fas fa-check"></i></div><span>OBD Arıza Teşhisi</span></div>
+        <div class="fl-item"><div class="fl-check"><i class="fas fa-check"></i></div><span>WhatsApp Bilgilendirme</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

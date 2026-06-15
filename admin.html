@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çiçek Otomotiv — Randevu Yönetimi</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <style>
+        :root {
+            --bg:   #0D1321;
+            --bg-2: #121B2E;
+            --bg-3: #172238;
+            --bg-4: #1C2A44;
+            --gold: #C8A84B;
+            --gold-3: #F5D06E;
+            --w100: #fff;
+            --w80: rgba(255,255,255,.88);
+            --w60: rgba(255,255,255,.65);
+            --w40: rgba(255,255,255,.45);
+            --w10: rgba(255,255,255,.10);
+            --w06: rgba(255,255,255,.07);
+            --green: #22C55E;
+            --red: #EF4444;
+            --blue: #3B82F6;
+            --radius: 12px;
+            --trans: .2s ease;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--w80); min-height: 100vh; }
+
+        /* ── LOGIN ── */
+        .login-wrap {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .login-box {
+            background: var(--bg-2); border: 1px solid var(--w10);
+            border-radius: 20px; padding: 48px 40px; max-width: 400px; width: 100%;
+            text-align: center;
+        }
+        .login-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 28px; }
+        .login-logo .ico { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, var(--gold), var(--gold-3)); display: flex; align-items: center; justify-content: center; color: #0a0700; font-size: 1.1rem; }
+        .login-logo span { font-size: 1.1rem; font-weight: 800; color: var(--w100); letter-spacing: .02em; }
+        .login-box h2 { font-size: 1.4rem; margin-bottom: 6px; color: var(--w100); }
+        .login-box p { font-size: .85rem; color: var(--w40); margin-bottom: 28px; }
+        .login-box input {
+            width: 100%; padding: 13px 16px; border-radius: var(--radius);
+            border: 1.5px solid var(--w10); background: var(--bg-3);
+            color: var(--w100); font-size: .9rem; font-family: inherit;
+            transition: border-color var(--trans); margin-bottom: 14px;
+        }
+        .login-box input:focus { outline: none; border-color: var(--gold); }
+        .login-box input[type="password"] { letter-spacing: .1em; }
+        .btn-primary {
+            width: 100%; padding: 14px; border-radius: var(--radius); border: none; cursor: pointer;
+            background: linear-gradient(135deg, var(--gold), var(--gold-3));
+            color: #0a0700; font-weight: 700; font-size: .95rem; font-family: inherit;
+            transition: filter var(--trans), transform var(--trans);
+        }
+        .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+        .login-err { color: #EF4444; font-size: .82rem; margin-top: 10px; display: none; }
+
+        /* ── DASHBOARD ── */
+        #dashboard { display: none; }
+        .topbar-admin {
+            background: var(--bg-2); border-bottom: 1px solid var(--w06);
+            padding: 0 28px; height: 60px;
+            display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .ta-brand { display: flex; align-items: center; gap: 10px; }
+        .ta-brand .ico { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-3)); display: flex; align-items: center; justify-content: center; color: #0a0700; font-size: .85rem; }
+        .ta-brand span { font-weight: 700; font-size: .95rem; color: var(--w100); }
+        .ta-right { display: flex; align-items: center; gap: 16px; }
+        .ta-badge { font-size: .78rem; color: var(--w40); }
+        .btn-logout { padding: 7px 16px; border-radius: 8px; border: 1px solid var(--w10); color: var(--w60); font-size: .8rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); }
+        .btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+        .admin-body { max-width: 1200px; margin: 0 auto; padding: 36px 28px; }
+
+        /* Stats */
+        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+        .stat-card { background: var(--bg-2); border: 1px solid var(--w06); border-radius: var(--radius); padding: 20px 24px; }
+        .stat-card .label { font-size: .75rem; color: var(--w40); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+        .stat-card .val { font-size: 2rem; font-weight: 800; color: var(--w100); }
+        .stat-card .sub { font-size: .75rem; color: var(--w40); margin-top: 4px; }
+        .stat-card.gold .val { color: var(--gold); }
+        .stat-card.green .val { color: var(--green); }
+        .stat-card.blue .val { color: var(--blue); }
+
+        /* Toolbar */
+        .toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+        .toolbar h3 { font-size: 1rem; color: var(--w100); flex: 1; }
+        .search-box {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--bg-2); border: 1px solid var(--w10); border-radius: 8px;
+            padding: 8px 14px;
+        }
+        .search-box input { background: none; border: none; outline: none; color: var(--w80); font-size: .85rem; font-family: inherit; width: 180px; }
+        .search-box i { color: var(--w40); font-size: .85rem; }
+        .filter-sel {
+            padding: 8px 14px; border-radius: 8px; border: 1px solid var(--w10);
+            background: var(--bg-2); color: var(--w80); font-size: .85rem; font-family: inherit; cursor: pointer;
+        }
+        .btn-clear { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--red); color: var(--red); font-size: .8rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); }
+        .btn-clear:hover { background: var(--red); color: #fff; }
+        .btn-export { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--gold); color: var(--gold); font-size: .8rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); display: flex; align-items: center; gap: 6px; }
+        .btn-export:hover { background: var(--gold); color: #0a0700; }
+
+        /* Table */
+        .table-wrap { background: var(--bg-2); border: 1px solid var(--w06); border-radius: 16px; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; }
+        thead { background: var(--bg-3); }
+        thead th { padding: 13px 16px; text-align: left; font-size: .75rem; font-weight: 600; color: var(--w40); text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+        tbody tr { border-top: 1px solid var(--w06); transition: background var(--trans); }
+        tbody tr:hover { background: var(--w06); }
+        tbody td { padding: 13px 16px; font-size: .85rem; color: var(--w80); vertical-align: middle; }
+        .td-name { font-weight: 600; color: var(--w100); }
+        .td-service { color: var(--gold); font-size: .8rem; }
+        .td-plate { font-family: monospace; font-size: .8rem; background: var(--bg-4); padding: 3px 8px; border-radius: 5px; display: inline-block; color: var(--w60); }
+        .td-date { font-size: .8rem; color: var(--w60); white-space: nowrap; }
+        .td-phone a { color: var(--blue); text-decoration: none; }
+        .td-phone a:hover { text-decoration: underline; }
+        .badge-new { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: .72rem; font-weight: 600; background: rgba(34,197,94,.15); color: var(--green); }
+
+        /* Actions */
+        .act-btn { padding: 5px 10px; border-radius: 6px; border: 1px solid var(--w10); background: none; cursor: pointer; color: var(--w40); font-size: .75rem; font-family: inherit; transition: all var(--trans); }
+        .act-btn:hover { border-color: var(--red); color: var(--red); }
+        .act-btn.whatsapp:hover { border-color: var(--green); color: var(--green); }
+
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--w40); }
+        .empty-state i { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+        .empty-state p { font-size: .9rem; }
+
+        @media (max-width: 768px) {
+            .stat-row { grid-template-columns: repeat(2, 1fr); }
+            .table-wrap { overflow-x: auto; }
+            table { min-width: 700px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginWrap" class="login-wrap">
+    <div class="login-box">
+        <div class="login-logo">
+            <div class="ico"><i class="fas fa-gear"></i></div>
+            <span>ÇİÇEK OTOMOTİV</span>
+        </div>
+        <h2>Yönetim Paneli</h2>
+        <p>Randevu kayıtlarına erişmek için giriş yapın.</p>
+        <input type="text" id="loginUser" placeholder="Kullanıcı adı" autocomplete="username">
+        <input type="password" id="loginPass" placeholder="Şifre" autocomplete="current-password">
+        <button class="btn-primary" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Giriş Yap</button>
+        <div class="login-err" id="loginErr">Kullanıcı adı veya şifre hatalı.</div>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+    <div class="topbar-admin">
+        <div class="ta-brand">
+            <div class="ico"><i class="fas fa-gear"></i></div>
+            <span>Çiçek Otomotiv — Randevu Yönetimi</span>
+        </div>
+        <div class="ta-right">
+            <span class="ta-badge" id="lastRefresh"></span>
+            <button class="btn-logout" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Çıkış</button>
+        </div>
+    </div>
+
+    <div class="admin-body">
+        <!-- Stats -->
+        <div class="stat-row">
+            <div class="stat-card gold">
+                <div class="label">Toplam Randevu</div>
+                <div class="val" id="statTotal">0</div>
+                <div class="sub">Tüm zamanlar</div>
+            </div>
+            <div class="stat-card green">
+                <div class="label">Bu Hafta</div>
+                <div class="val" id="statWeek">0</div>
+                <div class="sub">Son 7 gün</div>
+            </div>
+            <div class="stat-card blue">
+                <div class="label">Bugün</div>
+                <div class="val" id="statToday">0</div>
+                <div class="sub" id="statTodayDate"></div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Bu Ay</div>
+                <div class="val" id="statMonth">0</div>
+                <div class="sub">Aktif randevular</div>
+            </div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <h3><i class="fas fa-calendar-check"></i> Randevu Listesi</h3>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="İsim, plaka, telefon..." oninput="renderTable()">
+            </div>
+            <select class="filter-sel" id="filterService" onchange="renderTable()">
+                <option value="">Tüm hizmetler</option>
+                <option>Periyodik Bakım / Yağ Değişimi</option>
+                <option>Motor Tamiri & Revizyonu</option>
+                <option>DSG / Otomatik Şanzıman Onarımı</option>
+                <option>Fren Sistemi</option>
+                <option>Klima Bakımı & Onarımı</option>
+                <option>Elektrik & Elektronik Arıza</option>
+                <option>Kaporta & Boya</option>
+                <option>Diğer</option>
+            </select>
+            <button class="btn-export" onclick="exportCSV()"><i class="fas fa-download"></i> CSV İndir</button>
+            <button class="btn-clear" onclick="clearAll()"><i class="fas fa-trash"></i> Tümünü Sil</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ad Soyad</th>
+                        <th>Telefon</th>
+                        <th>Araç</th>
+                        <th>Plaka</th>
+                        <th>Hizmet</th>
+                        <th>Tarih / Saat</th>
+                        <th>Kayıt</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody id="aptTable"></tbody>
+            </table>
+            <div class="empty-state" id="emptyState" style="display:none">
+                <i class="fas fa-calendar-xmark"></i>
+                <p>Henüz randevu kaydı bulunmuyor.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const ADMIN_USER = 'cicekoto';
+const ADMIN_PASS = 'cicek2026';
+const STORAGE_KEY = 'cicekOtoApts';
+
+function doLogin() {
+    const u = document.getElementById('loginUser').value.trim();
+    const p = document.getElementById('loginPass').value;
+    if (u === ADMIN_USER && p === ADMIN_PASS) {
+        sessionStorage.setItem('adminAuth', '1');
+        document.getElementById('loginWrap').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        loadDashboard();
+    } else {
+        document.getElementById('loginErr').style.display = 'block';
+    }
+}
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+});
+
+function doLogout() {
+    sessionStorage.removeItem('adminAuth');
+    location.reload();
+}
+
+function getApts() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; }
+}
+
+function loadDashboard() {
+    const now = new Date();
+    document.getElementById('lastRefresh').textContent = 'Son güncelleme: ' + now.toLocaleTimeString('tr-TR');
+    document.getElementById('statTodayDate').textContent = now.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
+
+    const apts = getApts();
+    const today = now.toISOString().split('T')[0];
+    const weekAgo = new Date(now - 7*864e5).toISOString().split('T')[0];
+    const monthStr = now.toISOString().slice(0,7);
+
+    document.getElementById('statTotal').textContent = apts.length;
+    document.getElementById('statToday').textContent = apts.filter(a => a.date === today).length;
+    document.getElementById('statWeek').textContent = apts.filter(a => a.savedAt && a.savedAt.slice(0,10) >= weekAgo).length;
+    document.getElementById('statMonth').textContent = apts.filter(a => a.date && a.date.startsWith(monthStr)).length;
+
+    renderTable();
+}
+
+function renderTable() {
+    const apts = getApts();
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const svc = document.getElementById('filterService').value;
+
+    const filtered = apts.filter(a => {
+        const matchQ = !q || [a.name, a.phone, a.plate, a.brand, a.model].some(v => v && v.toLowerCase().includes(q));
+        const matchSvc = !svc || a.service === svc;
+        return matchQ && matchSvc;
+    }).sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
+
+    const tbody = document.getElementById('aptTable');
+    const empty = document.getElementById('emptyState');
+
+    if (!filtered.length) {
+        tbody.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+    }
+    empty.style.display = 'none';
+
+    tbody.innerHTML = filtered.map((a, i) => {
+        const isNew = a.savedAt && (Date.now() - new Date(a.savedAt)) < 86400000;
+        const waLink = `https://wa.me/90${a.phone.replace(/\D/g,'')}?text=${encodeURIComponent(`Merhaba ${a.name}, ${a.date} ${a.time} randevunuzu onaylıyoruz.`)}`;
+        return `
+        <tr>
+            <td style="color:var(--w40);font-size:.78rem">${filtered.length - i}</td>
+            <td>
+                <div class="td-name">${esc(a.name)}</div>
+                ${isNew ? '<span class="badge-new">Yeni</span>' : ''}
+            </td>
+            <td class="td-phone"><a href="tel:${esc(a.phone)}">${esc(a.phone)}</a></td>
+            <td style="font-size:.82rem">${esc(a.brand)} ${esc(a.model)} ${a.year ? '<br><span style="color:var(--w40)">'+esc(a.year)+'</span>' : ''}</td>
+            <td>${a.plate ? `<span class="td-plate">${esc(a.plate)}</span>` : '—'}</td>
+            <td class="td-service">${esc(a.service)}</td>
+            <td class="td-date">${esc(a.date)}<br>${esc(a.time)}</td>
+            <td class="td-date">${a.savedAt ? new Date(a.savedAt).toLocaleString('tr-TR', {day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '—'}</td>
+            <td style="display:flex;gap:6px;flex-wrap:wrap">
+                <a href="${waLink}" target="_blank"><button class="act-btn whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></button></a>
+                <button class="act-btn" title="Sil" onclick="deleteApt('${a.id}')"><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>`;
+    }).join('');
+}
+
+function esc(v) {
+    if (!v) return '—';
+    return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function deleteApt(id) {
+    if (!confirm('Bu randevuyu silmek istediğinize emin misiniz?')) return;
+    const apts = getApts().filter(a => a.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(apts));
+    loadDashboard();
+}
+
+function clearAll() {
+    if (!confirm('TÜM randevu kayıtları silinecek. Bu işlem geri alınamaz. Devam edilsin mi?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    loadDashboard();
+}
+
+function exportCSV() {
+    const apts = getApts();
+    if (!apts.length) { alert('Dışa aktarılacak kayıt yok.'); return; }
+    const headers = ['Ad Soyad','Telefon','E-posta','Marka','Model','Yıl','Plaka','Hizmet','Tarih','Saat','Açıklama','Kayıt Zamanı'];
+    const rows = apts.map(a => [
+        a.name, a.phone, a.email || '', a.brand, a.model, a.year || '', a.plate || '',
+        a.service, a.date, a.time, (a.description || '').replace(/,/g,' '), a.savedAt || ''
+    ].map(v => `"${String(v || '').replace(/"/g,'""')}"`).join(','));
+    const csv = '﻿' + [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'cicek-oto-randevular-' + new Date().toISOString().slice(0,10) + '.csv';
+    a.click(); URL.revokeObjectURL(url);
+}
+
+// Auto-check session
+if (sessionStorage.getItem('adminAuth')) {
+    document.getElementById('loginWrap').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadDashboard();
+}
+</script>
+</body>
+</html>
