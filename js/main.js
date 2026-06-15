@@ -124,6 +124,7 @@ function initStats() {
 }
 function animateNum(el) {
     const target = parseInt(el.dataset.target, 10);
+    if (Number.isNaN(target)) return; // data-target yoksa metni olduğu gibi bırak
     const dur = 1600;
     const inc = target / (dur / 16);
     let cur = 0;
@@ -377,7 +378,7 @@ function openModal(form, modal) {
         ].filter(Boolean).join('');
     }
 
-    const aptRecord = { id: Date.now().toString(36) + Math.random().toString(36).slice(2,6), name: g('fullName'), phone: g('phone'), brand: gl('carBrand'), model: gl('carModel'), year: g('carYear'), plate: plateVal, service: svcVal, date: g('aptDate'), time: g('aptTime'), email: g('email'), description: g('description'), savedAt: new Date().toISOString() };
+    const aptRecord = { id: Date.now().toString(36) + Math.random().toString(36).slice(2,6), name: g('fullName'), phone: g('phone'), brand: gl('carBrand'), model: gl('carModel'), year: g('carYear'), plate: plateVal, service: svcVal, date: g('aptDate'), time: g('aptTime'), email: g('email'), description: g('description'), status: 'pending', savedAt: new Date().toISOString() };
     saveAppointment(aptRecord);
     _printData = aptRecord;
 

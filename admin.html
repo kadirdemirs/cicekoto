@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -6,140 +6,192 @@
     <title>Çiçek Otomotiv — Randevu Yönetimi</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=Saira+Condensed:wght@600;700;800;900&family=Saira:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
     <style>
         :root {
-            --bg:   #0D1321;
-            --bg-2: #121B2E;
-            --bg-3: #172238;
-            --bg-4: #1C2A44;
-            --gold: #C8A84B;
-            --gold-3: #F5D06E;
+            --black: #08090C;
+            --bg:    #0C0D11;
+            --bg-2:  #121319;
+            --bg-3:  #181A21;
+            --bg-4:  #20232C;
+            --red:    #1CA9C9;
+            --red-2:  #29BFE0;
+            --red-3:  #5AD4EE;
+            --red-dim:rgba(28,169,201,.12);
+            --red-glow:rgba(28,169,201,.4);
             --w100: #fff;
             --w80: rgba(255,255,255,.88);
             --w60: rgba(255,255,255,.65);
             --w40: rgba(255,255,255,.45);
+            --w20: rgba(255,255,255,.22);
             --w10: rgba(255,255,255,.10);
             --w06: rgba(255,255,255,.07);
             --green: #22C55E;
-            --red: #EF4444;
+            --amber: #F59E0B;
+            --err: #EF4444;
             --blue: #3B82F6;
             --radius: 12px;
             --trans: .2s ease;
         }
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--w80); min-height: 100vh; }
+        body { font-family: 'Saira', system-ui, sans-serif; background: var(--bg); color: var(--w80); min-height: 100vh; }
+        .cond { font-family: 'Saira Condensed', sans-serif; font-style: italic; text-transform: uppercase; }
+
+        /* ── LOGO 3 · Tech Monogram ── */
+        .logo-mark { display: inline-flex; align-items: center; gap: 12px; }
+        .logo-mono { position: relative; font-family: 'Chakra Petch', sans-serif; font-style: italic; font-weight: 700; line-height: 1; letter-spacing: -.04em; color: #fff; padding: 3px 7px; flex-shrink: 0; }
+        .logo-mono b { color: var(--red); font-weight: 700; }
+        .logo-mono::before, .logo-mono::after { content: ''; position: absolute; width: 9px; height: 9px; border: 2px solid var(--red); }
+        .logo-mono::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+        .logo-mono::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+        .logo-txt { display: flex; flex-direction: column; line-height: 1; }
+        .logo-txt .t1 { font-family: 'Saira Condensed', sans-serif; font-style: italic; font-weight: 800; color: var(--w100); letter-spacing: .03em; }
+        .logo-txt .t2 { font-weight: 700; letter-spacing: .22em; color: var(--red-2); }
 
         /* ── LOGIN ── */
-        .login-wrap {
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-            padding: 20px;
-        }
+        .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; overflow: hidden; }
+        .login-wrap::before { content: ''; position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(28,169,201,.14), transparent 70%); top: -200px; right: -150px; filter: blur(80px); }
         .login-box {
             background: var(--bg-2); border: 1px solid var(--w10);
-            border-radius: 20px; padding: 48px 40px; max-width: 400px; width: 100%;
-            text-align: center;
+            border-radius: 20px; padding: 46px 40px; max-width: 410px; width: 100%;
+            text-align: center; position: relative; z-index: 2;
         }
-        .login-logo { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 28px; }
-        .login-logo .ico { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, var(--gold), var(--gold-3)); display: flex; align-items: center; justify-content: center; color: #0a0700; font-size: 1.1rem; }
-        .login-logo span { font-size: 1.1rem; font-weight: 800; color: var(--w100); letter-spacing: .02em; }
-        .login-box h2 { font-size: 1.4rem; margin-bottom: 6px; color: var(--w100); }
-        .login-box p { font-size: .85rem; color: var(--w40); margin-bottom: 28px; }
+        .login-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; border-radius: 20px 20px 0 0; background: repeating-linear-gradient(45deg, var(--red) 0 9px, var(--bg-2) 9px 18px); }
+        .login-box .logo-mark { justify-content: center; margin-bottom: 26px; }
+        .login-box .logo-txt .t1 { font-size: 1.25rem; }
+        .login-box .logo-txt .t2 { font-size: .58rem; }
+        .login-box h2 { font-family: 'Saira Condensed', sans-serif; font-style: italic; text-transform: uppercase; font-size: 1.5rem; margin-bottom: 6px; color: var(--w100); }
+        .login-box p { font-size: .85rem; color: var(--w40); margin-bottom: 26px; }
         .login-box input {
             width: 100%; padding: 13px 16px; border-radius: var(--radius);
             border: 1.5px solid var(--w10); background: var(--bg-3);
             color: var(--w100); font-size: .9rem; font-family: inherit;
             transition: border-color var(--trans); margin-bottom: 14px;
         }
-        .login-box input:focus { outline: none; border-color: var(--gold); }
+        .login-box input:focus { outline: none; border-color: var(--red-2); box-shadow: 0 0 0 3px var(--red-dim); }
         .login-box input[type="password"] { letter-spacing: .1em; }
         .btn-primary {
-            width: 100%; padding: 14px; border-radius: var(--radius); border: none; cursor: pointer;
-            background: linear-gradient(135deg, var(--gold), var(--gold-3));
-            color: #0a0700; font-weight: 700; font-size: .95rem; font-family: inherit;
-            transition: filter var(--trans), transform var(--trans);
+            position: relative; overflow: hidden;
+            width: 100%; padding: 14px; border: none; cursor: pointer;
+            clip-path: polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+            background: linear-gradient(135deg, var(--red), var(--red-2));
+            color: #fff; font-weight: 700; font-size: .95rem; font-family: inherit; letter-spacing: .02em;
+            transition: filter var(--trans), transform var(--trans), box-shadow var(--trans);
+            box-shadow: 0 4px 20px var(--red-glow);
         }
-        .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
-        .login-err { color: #EF4444; font-size: .82rem; margin-top: 10px; display: none; }
+        .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 8px 28px var(--red-glow); }
+        .login-err { color: var(--err); font-size: .82rem; margin-top: 12px; display: none; }
 
         /* ── DASHBOARD ── */
         #dashboard { display: none; }
         .topbar-admin {
             background: var(--bg-2); border-bottom: 1px solid var(--w06);
-            padding: 0 28px; height: 60px;
+            padding: 0 28px; height: 62px;
             display: flex; align-items: center; justify-content: space-between;
             position: sticky; top: 0; z-index: 100;
         }
-        .ta-brand { display: flex; align-items: center; gap: 10px; }
-        .ta-brand .ico { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-3)); display: flex; align-items: center; justify-content: center; color: #0a0700; font-size: .85rem; }
-        .ta-brand span { font-weight: 700; font-size: .95rem; color: var(--w100); }
+        .topbar-admin::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 3px; background: repeating-linear-gradient(45deg, var(--red) 0 10px, var(--bg-2) 10px 20px); }
+        .topbar-admin .logo-txt .t1 { font-size: 1rem; }
+        .topbar-admin .logo-txt .t2 { font-size: .5rem; }
         .ta-right { display: flex; align-items: center; gap: 16px; }
         .ta-badge { font-size: .78rem; color: var(--w40); }
-        .btn-logout { padding: 7px 16px; border-radius: 8px; border: 1px solid var(--w10); color: var(--w60); font-size: .8rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); }
-        .btn-logout:hover { border-color: var(--red); color: var(--red); }
+        .btn-icon { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--w10); color: var(--w60); background: none; cursor: pointer; transition: all var(--trans); }
+        .btn-icon:hover { border-color: var(--red-2); color: var(--red-2); }
+        .btn-logout { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--w10); color: var(--w60); font-size: .82rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); display: inline-flex; align-items: center; gap: 7px; }
+        .btn-logout:hover { border-color: var(--err); color: var(--err); }
 
-        .admin-body { max-width: 1200px; margin: 0 auto; padding: 36px 28px; }
+        .admin-body { max-width: 1240px; margin: 0 auto; padding: 36px 28px; }
 
         /* Stats */
         .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
-        .stat-card { background: var(--bg-2); border: 1px solid var(--w06); border-radius: var(--radius); padding: 20px 24px; }
-        .stat-card .label { font-size: .75rem; color: var(--w40); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
-        .stat-card .val { font-size: 2rem; font-weight: 800; color: var(--w100); }
-        .stat-card .sub { font-size: .75rem; color: var(--w40); margin-top: 4px; }
-        .stat-card.gold .val { color: var(--gold); }
+        .stat-card { position: relative; background: var(--bg-2); border: 1px solid var(--w06); border-radius: var(--radius); padding: 22px 24px; overflow: hidden; transition: transform var(--trans), border-color var(--trans); }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--w10); }
+        .stat-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--w10); }
+        .stat-card.gold::before { background: var(--red); }
+        .stat-card.green::before { background: var(--green); }
+        .stat-card.blue::before { background: var(--blue); }
+        .stat-card .label { font-size: .72rem; color: var(--w40); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+        .stat-card .val { font-family: 'Saira Condensed', sans-serif; font-style: italic; font-size: 2.4rem; font-weight: 800; color: var(--w100); line-height: 1; }
+        .stat-card .sub { font-size: .74rem; color: var(--w40); margin-top: 6px; }
+        .stat-card.gold .val { color: var(--red-2); }
         .stat-card.green .val { color: var(--green); }
         .stat-card.blue .val { color: var(--blue); }
 
         /* Toolbar */
         .toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
-        .toolbar h3 { font-size: 1rem; color: var(--w100); flex: 1; }
-        .search-box {
-            display: flex; align-items: center; gap: 8px;
-            background: var(--bg-2); border: 1px solid var(--w10); border-radius: 8px;
-            padding: 8px 14px;
-        }
+        .toolbar h3 { font-family: 'Saira Condensed', sans-serif; font-style: italic; text-transform: uppercase; font-size: 1.2rem; color: var(--w100); flex: 1; display: flex; align-items: center; gap: 9px; }
+        .toolbar h3 i { color: var(--red-2); }
+        .search-box { display: flex; align-items: center; gap: 8px; background: var(--bg-2); border: 1px solid var(--w10); border-radius: 8px; padding: 8px 14px; }
         .search-box input { background: none; border: none; outline: none; color: var(--w80); font-size: .85rem; font-family: inherit; width: 180px; }
         .search-box i { color: var(--w40); font-size: .85rem; }
-        .filter-sel {
-            padding: 8px 14px; border-radius: 8px; border: 1px solid var(--w10);
-            background: var(--bg-2); color: var(--w80); font-size: .85rem; font-family: inherit; cursor: pointer;
-        }
-        .btn-clear { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--red); color: var(--red); font-size: .8rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); }
-        .btn-clear:hover { background: var(--red); color: #fff; }
-        .btn-export { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--gold); color: var(--gold); font-size: .8rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); display: flex; align-items: center; gap: 6px; }
-        .btn-export:hover { background: var(--gold); color: #0a0700; }
+        .filter-sel { padding: 9px 14px; border-radius: 8px; border: 1px solid var(--w10); background: var(--bg-2); color: var(--w80); font-size: .85rem; font-family: inherit; cursor: pointer; }
+        .filter-sel:focus { outline: none; border-color: var(--red-2); }
+        .btn-clear { padding: 9px 16px; border-radius: 8px; border: 1px solid var(--err); color: var(--err); font-size: .82rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); display: inline-flex; align-items: center; gap: 6px; }
+        .btn-clear:hover { background: var(--err); color: #fff; }
+        .btn-export { padding: 9px 16px; border-radius: 8px; border: 1px solid var(--red-2); color: var(--red-2); font-size: .82rem; font-family: inherit; background: none; cursor: pointer; transition: all var(--trans); display: inline-flex; align-items: center; gap: 6px; }
+        .btn-export:hover { background: var(--red-2); color: #fff; }
 
         /* Table */
         .table-wrap { background: var(--bg-2); border: 1px solid var(--w06); border-radius: 16px; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; }
         thead { background: var(--bg-3); }
-        thead th { padding: 13px 16px; text-align: left; font-size: .75rem; font-weight: 600; color: var(--w40); text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+        thead th { padding: 14px 16px; text-align: left; font-size: .72rem; font-weight: 700; color: var(--w40); text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
         tbody tr { border-top: 1px solid var(--w06); transition: background var(--trans); }
         tbody tr:hover { background: var(--w06); }
         tbody td { padding: 13px 16px; font-size: .85rem; color: var(--w80); vertical-align: middle; }
         .td-name { font-weight: 600; color: var(--w100); }
-        .td-service { color: var(--gold); font-size: .8rem; }
-        .td-plate { font-family: monospace; font-size: .8rem; background: var(--bg-4); padding: 3px 8px; border-radius: 5px; display: inline-block; color: var(--w60); }
+        .td-service { color: var(--red-3); font-size: .8rem; }
+        .td-plate { font-family: monospace; font-size: .8rem; background: var(--bg-4); padding: 3px 8px; border-radius: 5px; display: inline-block; color: var(--w60); letter-spacing: .04em; }
         .td-date { font-size: .8rem; color: var(--w60); white-space: nowrap; }
         .td-phone a { color: var(--blue); text-decoration: none; }
         .td-phone a:hover { text-decoration: underline; }
-        .badge-new { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: .72rem; font-weight: 600; background: rgba(34,197,94,.15); color: var(--green); }
+        .badge-new { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: .68rem; font-weight: 700; background: rgba(34,197,94,.15); color: var(--green); margin-left: 6px; vertical-align: middle; }
+
+        /* Status pill */
+        .status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; font-size: .76rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: all var(--trans); white-space: nowrap; }
+        .status-pill i { font-size: .6rem; }
+        .status-pending   { background: rgba(245,158,11,.14); color: var(--amber); }
+        .status-confirmed { background: rgba(59,130,246,.14); color: var(--blue); }
+        .status-done      { background: rgba(34,197,94,.14); color: var(--green); }
+        .status-pill:hover { filter: brightness(1.15); }
 
         /* Actions */
-        .act-btn { padding: 5px 10px; border-radius: 6px; border: 1px solid var(--w10); background: none; cursor: pointer; color: var(--w40); font-size: .75rem; font-family: inherit; transition: all var(--trans); }
-        .act-btn:hover { border-color: var(--red); color: var(--red); }
+        .act-btn { width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--w10); background: none; cursor: pointer; color: var(--w40); font-size: .78rem; font-family: inherit; transition: all var(--trans); }
+        .act-btn:hover { border-color: var(--err); color: var(--err); }
         .act-btn.whatsapp:hover { border-color: var(--green); color: var(--green); }
+        .act-btn.view:hover { border-color: var(--red-2); color: var(--red-2); }
 
-        .empty-state { text-align: center; padding: 60px 20px; color: var(--w40); }
-        .empty-state i { font-size: 2.5rem; margin-bottom: 12px; display: block; }
-        .empty-state p { font-size: .9rem; }
+        .empty-state { text-align: center; padding: 64px 20px; color: var(--w40); }
+        .empty-state i { font-size: 2.6rem; margin-bottom: 14px; display: block; color: var(--w20); }
+        .empty-state p { font-size: .92rem; }
+
+        /* Detail modal */
+        .modal-wrap { position: fixed; inset: 0; background: rgba(0,0,0,.82); backdrop-filter: blur(8px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 24px; }
+        .modal-wrap.open { display: flex; }
+        .modal-card { background: var(--bg-2); border: 1px solid var(--w10); border-radius: 18px; max-width: 480px; width: 100%; overflow: hidden; position: relative; animation: pop .35s cubic-bezier(.34,1.56,.64,1); }
+        @keyframes pop { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-head { padding: 22px 26px; background: var(--bg-3); border-bottom: 1px solid var(--w06); display: flex; align-items: center; justify-content: space-between; }
+        .modal-head h3 { font-family: 'Saira Condensed', sans-serif; font-style: italic; text-transform: uppercase; font-size: 1.2rem; color: var(--w100); }
+        .modal-close { width: 32px; height: 32px; border-radius: 50%; background: var(--w06); border: none; color: var(--w60); cursor: pointer; transition: all var(--trans); }
+        .modal-close:hover { background: var(--w10); color: var(--w100); }
+        .modal-body { padding: 22px 26px; }
+        .mrow { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--w06); }
+        .mrow:last-child { border-bottom: none; }
+        .mrow .k { font-size: .76rem; color: var(--w40); text-transform: uppercase; letter-spacing: .06em; }
+        .mrow .v { font-size: .9rem; color: var(--w100); font-weight: 600; text-align: right; }
+        .modal-actions { display: flex; gap: 10px; padding: 0 26px 24px; }
+        .modal-actions a, .modal-actions button { flex: 1; padding: 11px; border-radius: 8px; font-size: .85rem; font-weight: 600; font-family: inherit; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 7px; text-decoration: none; transition: all var(--trans); border: 1px solid var(--w10); background: none; color: var(--w80); }
+        .modal-actions .wa { background: rgba(37,211,102,.15); border-color: rgba(37,211,102,.3); color: #25D366; }
+        .modal-actions .wa:hover { background: rgba(37,211,102,.25); }
+        .modal-actions .call:hover { border-color: var(--blue); color: var(--blue); }
 
         @media (max-width: 768px) {
             .stat-row { grid-template-columns: repeat(2, 1fr); }
             .table-wrap { overflow-x: auto; }
-            table { min-width: 700px; }
+            table { min-width: 820px; }
+            .topbar-admin .logo-txt { display: none; }
         }
     </style>
 </head>
@@ -148,15 +200,15 @@
 <!-- LOGIN -->
 <div id="loginWrap" class="login-wrap">
     <div class="login-box">
-        <div class="login-logo">
-            <div class="ico"><i class="fas fa-gear"></i></div>
-            <span>ÇİÇEK OTOMOTİV</span>
+        <div class="logo-mark">
+            <div class="logo-mono" style="font-size:2rem"><b>C</b>O</div>
+            <div class="logo-txt"><span class="t1">ÇİÇEK</span><span class="t2">OTOMOTİV</span></div>
         </div>
         <h2>Yönetim Paneli</h2>
         <p>Randevu kayıtlarına erişmek için giriş yapın.</p>
         <input type="text" id="loginUser" placeholder="Kullanıcı adı" autocomplete="username">
         <input type="password" id="loginPass" placeholder="Şifre" autocomplete="current-password">
-        <button class="btn-primary" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Giriş Yap</button>
+        <button class="btn-primary" onclick="doLogin()"><i class="fas fa-right-to-bracket"></i> Giriş Yap</button>
         <div class="login-err" id="loginErr">Kullanıcı adı veya şifre hatalı.</div>
     </div>
 </div>
@@ -164,13 +216,14 @@
 <!-- DASHBOARD -->
 <div id="dashboard">
     <div class="topbar-admin">
-        <div class="ta-brand">
-            <div class="ico"><i class="fas fa-gear"></i></div>
-            <span>Çiçek Otomotiv — Randevu Yönetimi</span>
+        <div class="logo-mark">
+            <div class="logo-mono" style="font-size:1.5rem"><b>C</b>O</div>
+            <div class="logo-txt"><span class="t1">ÇİÇEK OTOMOTİV</span><span class="t2">RANDEVU YÖNETİMİ</span></div>
         </div>
         <div class="ta-right">
             <span class="ta-badge" id="lastRefresh"></span>
-            <button class="btn-logout" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Çıkış</button>
+            <button class="btn-icon" onclick="loadDashboard()" title="Yenile"><i class="fas fa-rotate"></i></button>
+            <button class="btn-logout" onclick="doLogout()"><i class="fas fa-right-from-bracket"></i> Çıkış</button>
         </div>
     </div>
 
@@ -193,9 +246,9 @@
                 <div class="sub" id="statTodayDate"></div>
             </div>
             <div class="stat-card">
-                <div class="label">Bu Ay</div>
-                <div class="val" id="statMonth">0</div>
-                <div class="sub">Aktif randevular</div>
+                <div class="label">Bekleyen</div>
+                <div class="val" id="statPending">0</div>
+                <div class="sub">Onay bekliyor</div>
             </div>
         </div>
 
@@ -206,6 +259,12 @@
                 <i class="fas fa-search"></i>
                 <input type="text" id="searchInput" placeholder="İsim, plaka, telefon..." oninput="renderTable()">
             </div>
+            <select class="filter-sel" id="filterStatus" onchange="renderTable()">
+                <option value="">Tüm durumlar</option>
+                <option value="pending">Bekliyor</option>
+                <option value="confirmed">Onaylandı</option>
+                <option value="done">Tamamlandı</option>
+            </select>
             <select class="filter-sel" id="filterService" onchange="renderTable()">
                 <option value="">Tüm hizmetler</option>
                 <option>Periyodik Bakım / Yağ Değişimi</option>
@@ -233,7 +292,7 @@
                         <th>Plaka</th>
                         <th>Hizmet</th>
                         <th>Tarih / Saat</th>
-                        <th>Kayıt</th>
+                        <th>Durum</th>
                         <th>İşlem</th>
                     </tr>
                 </thead>
@@ -241,9 +300,21 @@
             </table>
             <div class="empty-state" id="emptyState" style="display:none">
                 <i class="fas fa-calendar-xmark"></i>
-                <p>Henüz randevu kaydı bulunmuyor.</p>
+                <p>Kayıt bulunamadı.</p>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- DETAY MODAL -->
+<div class="modal-wrap" id="detailModal">
+    <div class="modal-card">
+        <div class="modal-head">
+            <h3>Randevu Detayı</h3>
+            <button class="modal-close" onclick="closeDetail()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body" id="detailBody"></div>
+        <div class="modal-actions" id="detailActions"></div>
     </div>
 </div>
 
@@ -251,6 +322,12 @@
 const ADMIN_USER = 'cicekoto';
 const ADMIN_PASS = 'cicek2026';
 const STORAGE_KEY = 'cicekOtoApts';
+const STATUS = {
+    pending:   { label: 'Bekliyor',    cls: 'status-pending',   icon: 'fa-clock' },
+    confirmed: { label: 'Onaylandı',   cls: 'status-confirmed', icon: 'fa-check' },
+    done:      { label: 'Tamamlandı',  cls: 'status-done',      icon: 'fa-flag-checkered' }
+};
+const STATUS_ORDER = ['pending', 'confirmed', 'done'];
 
 function doLogin() {
     const u = document.getElementById('loginUser').value.trim();
@@ -265,8 +342,10 @@ function doLogin() {
     }
 }
 
+// Enter sadece login ekranındayken giriş yapsın
 document.addEventListener('keydown', e => {
-    if (e.key === 'Enter') doLogin();
+    if (e.key === 'Enter' && document.getElementById('loginWrap').style.display !== 'none') doLogin();
+    if (e.key === 'Escape') closeDetail();
 });
 
 function doLogout() {
@@ -277,21 +356,23 @@ function doLogout() {
 function getApts() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; }
 }
+function saveApts(list) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+}
 
 function loadDashboard() {
     const now = new Date();
-    document.getElementById('lastRefresh').textContent = 'Son güncelleme: ' + now.toLocaleTimeString('tr-TR');
+    document.getElementById('lastRefresh').textContent = 'Güncellendi: ' + now.toLocaleTimeString('tr-TR', {hour:'2-digit',minute:'2-digit'});
     document.getElementById('statTodayDate').textContent = now.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
 
     const apts = getApts();
     const today = now.toISOString().split('T')[0];
     const weekAgo = new Date(now - 7*864e5).toISOString().split('T')[0];
-    const monthStr = now.toISOString().slice(0,7);
 
     document.getElementById('statTotal').textContent = apts.length;
     document.getElementById('statToday').textContent = apts.filter(a => a.date === today).length;
     document.getElementById('statWeek').textContent = apts.filter(a => a.savedAt && a.savedAt.slice(0,10) >= weekAgo).length;
-    document.getElementById('statMonth').textContent = apts.filter(a => a.date && a.date.startsWith(monthStr)).length;
+    document.getElementById('statPending').textContent = apts.filter(a => (a.status || 'pending') === 'pending').length;
 
     renderTable();
 }
@@ -300,11 +381,13 @@ function renderTable() {
     const apts = getApts();
     const q = document.getElementById('searchInput').value.toLowerCase();
     const svc = document.getElementById('filterService').value;
+    const st = document.getElementById('filterStatus').value;
 
     const filtered = apts.filter(a => {
         const matchQ = !q || [a.name, a.phone, a.plate, a.brand, a.model].some(v => v && v.toLowerCase().includes(q));
         const matchSvc = !svc || a.service === svc;
-        return matchQ && matchSvc;
+        const matchSt = !st || (a.status || 'pending') === st;
+        return matchQ && matchSvc && matchSt;
     }).sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
 
     const tbody = document.getElementById('aptTable');
@@ -319,21 +402,21 @@ function renderTable() {
 
     tbody.innerHTML = filtered.map((a, i) => {
         const isNew = a.savedAt && (Date.now() - new Date(a.savedAt)) < 86400000;
-        const waLink = `https://wa.me/90${a.phone.replace(/\D/g,'')}?text=${encodeURIComponent(`Merhaba ${a.name}, ${a.date} ${a.time} randevunuzu onaylıyoruz.`)}`;
+        const phoneDigits = (a.phone || '').replace(/\D/g,'');
+        const waLink = `https://wa.me/90${phoneDigits}?text=${encodeURIComponent(`Merhaba ${a.name}, ${a.date} ${a.time} randevunuzu onaylıyoruz.`)}`;
+        const s = STATUS[a.status] || STATUS.pending;
         return `
         <tr>
             <td style="color:var(--w40);font-size:.78rem">${filtered.length - i}</td>
-            <td>
-                <div class="td-name">${esc(a.name)}</div>
-                ${isNew ? '<span class="badge-new">Yeni</span>' : ''}
-            </td>
+            <td><span class="td-name">${esc(a.name)}</span>${isNew ? '<span class="badge-new">Yeni</span>' : ''}</td>
             <td class="td-phone"><a href="tel:${esc(a.phone)}">${esc(a.phone)}</a></td>
             <td style="font-size:.82rem">${esc(a.brand)} ${esc(a.model)} ${a.year ? '<br><span style="color:var(--w40)">'+esc(a.year)+'</span>' : ''}</td>
             <td>${a.plate ? `<span class="td-plate">${esc(a.plate)}</span>` : '—'}</td>
             <td class="td-service">${esc(a.service)}</td>
             <td class="td-date">${esc(a.date)}<br>${esc(a.time)}</td>
-            <td class="td-date">${a.savedAt ? new Date(a.savedAt).toLocaleString('tr-TR', {day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '—'}</td>
+            <td><span class="status-pill ${s.cls}" onclick="cycleStatus('${a.id}')" title="Durumu değiştir"><i class="fas ${s.icon}"></i> ${s.label}</span></td>
             <td style="display:flex;gap:6px;flex-wrap:wrap">
+                <button class="act-btn view" title="Detay" onclick="openDetail('${a.id}')"><i class="fas fa-eye"></i></button>
                 <a href="${waLink}" target="_blank"><button class="act-btn whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></button></a>
                 <button class="act-btn" title="Sil" onclick="deleteApt('${a.id}')"><i class="fas fa-trash"></i></button>
             </td>
@@ -341,15 +424,47 @@ function renderTable() {
     }).join('');
 }
 
+function cycleStatus(id) {
+    const apts = getApts();
+    const a = apts.find(x => x.id === id);
+    if (!a) return;
+    const cur = a.status || 'pending';
+    a.status = STATUS_ORDER[(STATUS_ORDER.indexOf(cur) + 1) % STATUS_ORDER.length];
+    saveApts(apts);
+    loadDashboard();
+}
+
+function openDetail(id) {
+    const a = getApts().find(x => x.id === id);
+    if (!a) return;
+    const s = STATUS[a.status] || STATUS.pending;
+    const phoneDigits = (a.phone || '').replace(/\D/g,'');
+    document.getElementById('detailBody').innerHTML = [
+        ['Ad Soyad', a.name], ['Telefon', a.phone], ['E-posta', a.email || '—'],
+        ['Araç', `${a.brand || ''} ${a.model || ''} ${a.year ? '('+a.year+')' : ''}`.trim() || '—'],
+        ['Plaka', a.plate ? a.plate.toUpperCase() : '—'],
+        ['Hizmet', a.service], ['Tarih / Saat', `${a.date || ''} ${a.time || ''}`],
+        ['Durum', s.label],
+        ['Açıklama', a.description || '—'],
+        ['Kayıt', a.savedAt ? new Date(a.savedAt).toLocaleString('tr-TR') : '—']
+    ].map(([k, v]) => `<div class="mrow"><span class="k">${k}</span><span class="v">${esc(v)}</span></div>`).join('');
+    document.getElementById('detailActions').innerHTML = `
+        <a class="wa" href="https://wa.me/90${phoneDigits}?text=${encodeURIComponent(`Merhaba ${a.name}, ${a.date} ${a.time} randevunuzu onaylıyoruz.`)}" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a class="call" href="tel:${esc(a.phone)}"><i class="fas fa-phone"></i> Ara</a>`;
+    document.getElementById('detailModal').classList.add('open');
+}
+function closeDetail() { document.getElementById('detailModal').classList.remove('open'); }
+document.getElementById('detailModal').addEventListener('click', e => { if (e.target.id === 'detailModal') closeDetail(); });
+
 function esc(v) {
+    if (v === 0) return '0';
     if (!v) return '—';
     return String(v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
 function deleteApt(id) {
     if (!confirm('Bu randevuyu silmek istediğinize emin misiniz?')) return;
-    const apts = getApts().filter(a => a.id !== id);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(apts));
+    saveApts(getApts().filter(a => a.id !== id));
     loadDashboard();
 }
 
@@ -362,12 +477,13 @@ function clearAll() {
 function exportCSV() {
     const apts = getApts();
     if (!apts.length) { alert('Dışa aktarılacak kayıt yok.'); return; }
-    const headers = ['Ad Soyad','Telefon','E-posta','Marka','Model','Yıl','Plaka','Hizmet','Tarih','Saat','Açıklama','Kayıt Zamanı'];
+    const headers = ['Ad Soyad','Telefon','E-posta','Marka','Model','Yıl','Plaka','Hizmet','Tarih','Saat','Durum','Açıklama','Kayıt Zamanı'];
     const rows = apts.map(a => [
         a.name, a.phone, a.email || '', a.brand, a.model, a.year || '', a.plate || '',
-        a.service, a.date, a.time, (a.description || '').replace(/,/g,' '), a.savedAt || ''
+        a.service, a.date, a.time, (STATUS[a.status] || STATUS.pending).label,
+        (a.description || '').replace(/[\r\n]+/g,' '), a.savedAt || ''
     ].map(v => `"${String(v || '').replace(/"/g,'""')}"`).join(','));
-    const csv = '﻿' + [headers.join(','), ...rows].join('\n');
+    const csv = '﻿' + [headers.join(','), ...rows].join('\r\n');
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -375,7 +491,7 @@ function exportCSV() {
     a.click(); URL.revokeObjectURL(url);
 }
 
-// Auto-check session
+// Oturum kontrolü
 if (sessionStorage.getItem('adminAuth')) {
     document.getElementById('loginWrap').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';

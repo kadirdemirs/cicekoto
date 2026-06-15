@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Çiçek Otomotiv — Logo v3 (Kreatif / Sportif)</title>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@600;700&family=Archivo+Black&family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=Orbitron:wght@700;900&family=Teko:wght@600;700&family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0C0D11;--bg2:#15171b;--blue:#1CA9C9;--blue2:#29BFE0;--blue3:#5AD4EE;--ink:#0A2A33;--w:rgba(255,255,255,.08);--txt:#9aa0aa}
+body{font-family:'Rajdhani',sans-serif;background:var(--bg);color:var(--txt);padding:46px 22px;min-height:100vh}
+h1{font-family:'Orbitron',sans-serif;font-weight:900;text-transform:uppercase;color:#fff;font-size:1.9rem;text-align:center;margin-bottom:6px;letter-spacing:.04em}
+.sub{text-align:center;margin-bottom:38px;font-size:1.05rem}
+.sub b{color:var(--blue2)}
+.grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{background:var(--bg2);border:1px solid var(--w);border-radius:18px;overflow:hidden}
+.card .head{padding:16px 22px;border-bottom:1px solid var(--w);display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.card h3{font-family:'Orbitron',sans-serif;font-weight:700;text-transform:uppercase;color:#fff;font-size:1rem;letter-spacing:.02em}
+.card .font{font-size:.72rem;color:var(--blue3);letter-spacing:.05em}
+.card .desc{font-size:.84rem;padding:14px 22px;line-height:1.5;border-top:1px solid var(--w)}
+.show{padding:40px 22px;display:flex;align-items:center;justify-content:center;gap:40px;min-height:150px}
+.show.dark{background:#08090c}
+.show.light{background:#eef1f3}
+.divline{width:1px;align-self:stretch;background:var(--w)}
+.lbl{position:absolute;bottom:8px;left:14px;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt)}
+.showwrap{position:relative;display:flex;width:100%}
+.showwrap > .show{flex:1}
+@media(max-width:820px){.grid{grid-template-columns:1fr}.show{gap:24px}}
+
+/* 1 SPEED WORDMARK */
+.l1{display:inline-flex;align-items:center;gap:0}
+.l1 .bar{display:flex;flex-direction:column;gap:3px;margin-right:11px}
+.l1 .bar i{display:block;height:4px;background:var(--blue);border-radius:2px}
+.l1 .bar i:nth-child(1){width:26px}.l1 .bar i:nth-child(2){width:34px}.l1 .bar i:nth-child(3){width:20px}
+.l1 .txt{font-family:'Antonio',sans-serif;font-weight:700;font-size:2.6rem;line-height:.82;text-transform:uppercase;color:#fff;letter-spacing:.01em}
+.l1 .txt small{display:block;font-size:.72rem;letter-spacing:.5em;color:var(--blue2);font-weight:600}
+.light .l1 .txt{color:var(--ink)}.light .l1 .txt small{color:var(--blue)}
+
+/* 2 NEGATIVE Ç BADGE */
+.l2{display:inline-flex;align-items:center;gap:14px}
+.l2 .mark{width:62px;height:62px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.l2 .mark::after{content:'';position:absolute;right:-14px;top:0;bottom:0;width:24px;background:var(--bg2);transform:skewX(-18deg)}
+.light .l2 .mark::after{background:#eef1f3}
+.l2 .mark span{font-family:'Archivo Black',sans-serif;font-size:2.2rem;color:#fff;position:relative;z-index:2;line-height:1}
+.l2 .wm{font-family:'Archivo Black',sans-serif;font-size:1.5rem;text-transform:uppercase;color:#fff;line-height:.95;letter-spacing:-.01em}
+.l2 .wm small{display:block;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.32em;color:var(--blue2)}
+.light .l2 .wm{color:var(--ink)}
+
+/* 3 TECH MONOGRAM */
+.l3{display:inline-flex;flex-direction:column;align-items:center;gap:8px}
+.l3 .mono{font-family:'Chakra Petch',sans-serif;font-style:italic;font-weight:700;font-size:3.4rem;color:#fff;line-height:1;letter-spacing:-.04em;position:relative;padding:0 6px}
+.l3 .mono b{color:var(--blue)}
+.l3 .mono::before,.l3 .mono::after{content:'';position:absolute;width:14px;height:14px;border:2.5px solid var(--blue)}
+.l3 .mono::before{top:-4px;left:-4px;border-right:0;border-bottom:0}
+.l3 .mono::after{bottom:-4px;right:-4px;border-left:0;border-top:0}
+.l3 .wm{font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:.38em;text-transform:uppercase;color:var(--blue2)}
+.light .l3 .mono{color:var(--ink)}
+
+/* 4 SPEED CUT */
+.l4{position:relative;display:inline-block;padding:14px 26px;background:linear-gradient(120deg,var(--ink),#06181d);overflow:hidden;border-radius:8px}
+.l4::before{content:'';position:absolute;top:0;bottom:0;left:-30%;width:40%;background:var(--blue);transform:skewX(-22deg);opacity:.9}
+.l4::after{content:'';position:absolute;top:0;bottom:0;left:6%;width:5px;background:var(--blue3);transform:skewX(-22deg)}
+.l4 .t{position:relative;z-index:2;font-family:'Teko',sans-serif;font-weight:700;font-size:2.7rem;line-height:.8;text-transform:uppercase;color:#fff;font-style:italic;display:block}
+.l4 .t small{display:block;font-size:.74rem;letter-spacing:.36em;color:var(--blue3);font-weight:600}
+
+/* 5 ORBIT RING */
+.l5{display:inline-flex;align-items:center;gap:15px}
+.l5 svg{flex-shrink:0}
+.l5 .wm{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.35rem;text-transform:uppercase;color:#fff;line-height:1;letter-spacing:.02em}
+.l5 .wm small{display:block;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.3em;color:var(--blue2);margin-top:3px}
+.light .l5 .wm{color:var(--ink)}
+
+/* 6 STACKED BLOCK */
+.l6{display:inline-flex;flex-direction:column;line-height:.86}
+.l6 .top{font-family:'Archivo Black',sans-serif;font-size:2.4rem;text-transform:uppercase;color:#fff;letter-spacing:-.02em}
+.l6 .bot{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.92rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:var(--blue);padding:2px 8px;width:fit-content;margin-top:5px;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.light .l6 .top{color:var(--ink)}
+</style>
+</head>
+<body>
+<h1>Logo · v3</h1>
+<p class="sub">Kreatif + sportif, her birinde başka bir teknik/yarış fontu. Beğendiğinin numarasını söyle yavrum.</p>
+
+<div class="grid">
+  <div class="card">
+    <div class="head"><h3>1 · Speed Wordmark</h3><span class="font">Antonio</span></div>
+    <div class="showwrap">
+      <div class="show dark"><div class="l1"><div class="bar"><i></i><i></i><i></i></div><div class="txt">ÇİÇEK<small>OTOMOTİV</small></div></div><span class="lbl">koyu</span></div>
+      <div class="divline"></div>
+      <div class="show light"><div class="l1"><div class="bar"><i></i><i></i><i></i></div><div class="txt">ÇİÇEK<small>OTOMOTİV</small></div></div><span class="lbl">açık</span></div>
+    </div>
+    <div class="desc">İnce kondens harfler + sola kaçan hız çizgileri. Hızlı ve teknik bir his.</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>2 · Negatif Ç Rozet</h3><span class="font">Archivo Black</span></div>
+    <div class="showwrap">
+      <div class="show dark"><div class="l2"><div class="mark"><span>Ç</span></div><div class="wm">ÇİÇEK<small>OTOMOTİV</small></div></div><span class="lbl">koyu</span></div>
+      <div class="divline"></div>
+      <div class="show light"><div class="l2"><div class="mark"><span>Ç</span></div><div class="wm">ÇİÇEK<small>OTOMOTİV</small></div></div><span class="lbl">açık</span></div>
+    </div>
+    <div class="desc">Mavi dairede diyagonal kesikle 'Ç'. İkonik, güçlü, app ikonu/favicon için ideal.</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>3 · Tech Monogram</h3><span class="font">Chakra Petch</span></div>
+    <div class="showwrap">
+      <div class="show dark"><div class="l3"><div class="mono"><b>C</b>O</div><div class="wm">ÇİÇEK OTOMOTİV</div></div><span class="lbl">koyu</span></div>
+      <div class="divline"></div>
+      <div class="show light"><div class="l3"><div class="mono"><b>C</b>O</div><div class="wm">ÇİÇEK OTOMOTİV</div></div><span class="lbl">açık</span></div>
+    </div>
+    <div class="desc">Köşeli teknik 'CO' monogram + HUD köşe braketleri. Mühendislik/teknik hava.</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>4 · Speed Cut</h3><span class="font">Teko (italic)</span></div>
+    <div class="showwrap">
+      <div class="show dark"><div class="l4"><span class="t">ÇİÇEK<small>OTOMOTİV</small></span></div><span class="lbl">koyu</span></div>
+      <div class="divline"></div>
+      <div class="show light"><div class="l4"><span class="t">ÇİÇEK<small>OTOMOTİV</small></span></div><span class="lbl">açık</span></div>
+    </div>
+    <div class="desc">Diyagonal hız dilimi + italik blok. En agresif/yarış hissi. Etiket/sticker gibi.</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>5 · Orbit Ring</h3><span class="font">Orbitron</span></div>
+    <div class="showwrap">
+      <div class="show dark"><div class="l5">
+        <svg width="58" height="58" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="26" fill="none" stroke="#1CA9C9" stroke-width="4" stroke-dasharray="118 30" stroke-linecap="round" transform="rotate(-40 32 32)"/>
+          <circle cx="32" cy="32" r="15" fill="none" stroke="#5AD4EE" stroke-width="2" opacity=".6"/>
+          <text x="32" y="40" font-family="Orbitron" font-weight="900" font-size="20" fill="#fff" text-anchor="middle">Ç</text>
+        </svg>
+        <div class="wm">ÇİÇEK<small>OTOMOTİV</small></div>
+      </div><span class="lbl">koyu</span></div>
+      <div class="divline"></div>
+      <div class="show light"><div class="l5">
+        <svg width="58" height="58" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="26" fill="none" stroke="#1CA9C9" stroke-width="4" stroke-dasharray="118 30" stroke-linecap="round" transform="rotate(-40 32 32)"/>
+          <circle cx="32" cy="32" r="15" fill="none" stroke="#1CA9C9" stroke-width="2" opacity=".5"/>
+          <text x="32" y="40" font-family="Orbitron" font-weight="900" font-size="20" fill="#0A2A33" text-anchor="middle">Ç</text>
+        </svg>
+        <div class="wm">ÇİÇEK<small>OTOMOTİV</small></div>
+      </div><span class="lbl">açık</span></div>
+    </div>
+    <div class="desc">Yörünge/pist halkası + futuristik 'Ç'. Modern, teknolojik, dengeli.</div>
+  </div>
+
+  <div class="card">
+    <div class="head"><h3>6 · Stacked Block</h3><span class="font">Archivo Black</span></div>
+    <div class="showwrap">
+      <div class="show dark"><div class="l6"><span class="top">ÇİÇEK</span><span class="bot">OTOMOTİV</span></div><span class="lbl">koyu</span></div>
+      <div class="divline"></div>
+      <div class="show light"><div class="l6"><span class="top">ÇİÇEK</span><span class="bot">OTOMOTİV</span></div><span class="lbl">açık</span></div>
+    </div>
+    <div class="desc">İri blok 'ÇİÇEK' + mavi etiket 'OTOMOTİV'. Cesur, net, modern kurumsal.</div>
+  </div>
+</div>
+</body>
+</html>

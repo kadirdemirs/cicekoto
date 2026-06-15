@@ -4,8 +4,8 @@
   "description": "Her marka ve modelde uzman oto servis. Başakşehir, İstanbul.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0D1321",
-  "theme_color": "#C8A84B",
+  "background_color": "#0C0D11",
+  "theme_color": "#1CA9C9",
   "orientation": "portrait-primary",
   "lang": "tr",
   "icons": [
