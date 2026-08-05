@@ -1,0 +1,348 @@
+{
+  "source": "https://forged.build",
+  "generatedAt": "2026-08-05T07:24:18.651Z",
+  "results": [
+    {
+      "path": "assets/bin/auraruntime.js",
+      "ok": true,
+      "bytes": 31962,
+      "retained": true
+    },
+    {
+      "path": "assets/bin/auraruntime.wasm",
+      "ok": true,
+      "bytes": 60896,
+      "retained": true
+    },
+    {
+      "path": "assets/bin/app.aura",
+      "ok": true,
+      "bytes": 2605231,
+      "retained": true
+    },
+    {
+      "path": "assets/bin/visit.bin",
+      "ok": true,
+      "bytes": 23,
+      "retained": true
+    },
+    {
+      "path": "assets/fonts/AkiraExpanded.otf",
+      "ok": true,
+      "bytes": 26320,
+      "retained": true
+    },
+    {
+      "path": "assets/fonts/Manrope.ttf",
+      "ok": true,
+      "bytes": 167160,
+      "retained": true
+    },
+    {
+      "path": "assets/images/favicon.png",
+      "ok": true,
+      "bytes": 10045,
+      "retained": true
+    },
+    {
+      "path": "assets/images/0d1d7043-f534-462b-b94e-98d9c65b1f4b_lineblur.jpg",
+      "ok": true,
+      "bytes": 8805,
+      "retained": true
+    },
+    {
+      "path": "assets/images/26141b4c-4b1a-4e43-8f71-f6cd0cf94395_forged-f.png",
+      "ok": true,
+      "bytes": 22653,
+      "retained": true
+    },
+    {
+      "path": "assets/images/f02983dc-d93c-422e-9dda-b6c658056947_lightblur.jpg",
+      "ok": true,
+      "bytes": 10305,
+      "retained": true
+    },
+    {
+      "path": "assets/images/logo.png",
+      "ok": true,
+      "bytes": 6287,
+      "retained": true
+    },
+    {
+      "path": "assets/images/logo.svg",
+      "ok": true,
+      "bytes": 5793,
+      "retained": true
+    },
+    {
+      "path": "assets/images/social.png",
+      "ok": true,
+      "bytes": 489732,
+      "retained": true
+    },
+    {
+      "path": "assets/images/openlink.svg",
+      "ok": true,
+      "bytes": 479,
+      "retained": true
+    },
+    {
+      "path": "assets/images/youtube-icon.svg",
+      "ok": true,
+      "bytes": 506,
+      "retained": true
+    },
+    {
+      "path": "assets/images/instagram-icon.svg",
+      "ok": true,
+      "bytes": 2153,
+      "retained": true
+    },
+    {
+      "path": "assets/images/linkedin-icon.svg",
+      "ok": true,
+      "bytes": 596,
+      "retained": true
+    },
+    {
+      "path": "assets/images/x-icon.svg",
+      "ok": true,
+      "bytes": 338,
+      "retained": true
+    },
+    {
+      "path": "assets/video/motion.mp4",
+      "ok": true,
+      "bytes": 2626997,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/0d77854d5c0f7838adcd0bf6e9c4f0b18121c9a4-540p.mp4",
+      "ok": true,
+      "bytes": 12242105,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/1846f8233c9d8c43c122862e6333e15f1488966c-540p.mp4",
+      "ok": true,
+      "bytes": 8447587,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/977c85947ca5359d5f85bd7aea5631065d7ca96f-540p.mp4",
+      "ok": true,
+      "bytes": 7192767,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/ca6e088c6ac22176cafd6a23ff66dcfe3552c668-540p.mp4",
+      "ok": true,
+      "bytes": 5403849,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/a826ae4531b91fa6bab47cd6565801c085c7566c-540p.mp4",
+      "ok": true,
+      "bytes": 7246853,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/61f00eeada5fc239f8a91e6973123e24e34db54f-540p.mp4",
+      "ok": true,
+      "bytes": 3228601,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/96b3ef4085c6a2ae1f7793af57a1acd0c8c454d4-540p.mp4",
+      "ok": true,
+      "bytes": 4777968,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/0d77854d5c0f7838adcd0bf6e9c4f0b18121c9a4-thumbnail.jpg",
+      "ok": true,
+      "bytes": 15358,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/1846f8233c9d8c43c122862e6333e15f1488966c-thumbnail.jpg",
+      "ok": true,
+      "bytes": 23787,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/977c85947ca5359d5f85bd7aea5631065d7ca96f-thumbnail.jpg",
+      "ok": true,
+      "bytes": 32559,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/ca6e088c6ac22176cafd6a23ff66dcfe3552c668-thumbnail.jpg",
+      "ok": true,
+      "bytes": 21664,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/a826ae4531b91fa6bab47cd6565801c085c7566c-thumbnail.jpg",
+      "ok": true,
+      "bytes": 21873,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/61f00eeada5fc239f8a91e6973123e24e34db54f-thumbnail.jpg",
+      "ok": true,
+      "bytes": 24654,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/96b3ef4085c6a2ae1f7793af57a1acd0c8c454d4-thumbnail.jpg",
+      "ok": true,
+      "bytes": 21469,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/dc98f48b18b4f7772209e8991768e65df1be1d68-3840x2160-w800.webp",
+      "ok": true,
+      "bytes": 18098,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/dc98f48b18b4f7772209e8991768e65df1be1d68-3840x2160-w800.jpg",
+      "ok": true,
+      "bytes": 40287,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/b7f3735fc1af95a694a1bbb42ea8bb0bf8def651-3840x2160-w800.webp",
+      "ok": true,
+      "bytes": 35520,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/b7f3735fc1af95a694a1bbb42ea8bb0bf8def651-3840x2160-w800.jpg",
+      "ok": true,
+      "bytes": 64690,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/9522fe3237f46e8ea9fc44a8022487371631fc5e-1920x1080-w800.webp",
+      "ok": true,
+      "bytes": 21532,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/9522fe3237f46e8ea9fc44a8022487371631fc5e-1920x1080-w800.jpg",
+      "ok": true,
+      "bytes": 45246,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/370d43bac22008be6cc4b8bb63eb585b055e3bc8-1920x1080-w800.webp",
+      "ok": true,
+      "bytes": 22172,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/370d43bac22008be6cc4b8bb63eb585b055e3bc8-1920x1080-w800.jpg",
+      "ok": true,
+      "bytes": 45463,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/a81dcebd911637b0ea3e49e660d01c55f4b76025-2774x1552-w800.webp",
+      "ok": true,
+      "bytes": 16350,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/a81dcebd911637b0ea3e49e660d01c55f4b76025-2774x1552-w800.jpg",
+      "ok": true,
+      "bytes": 38247,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/e6981fc25af0fccbd4e05b1d252b91dbaaab0543-2776x1488-w800.webp",
+      "ok": true,
+      "bytes": 64632,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/e6981fc25af0fccbd4e05b1d252b91dbaaab0543-2776x1488-w800.jpg",
+      "ok": true,
+      "bytes": 103696,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/52b072cf3bc5f7143ed585afa822a4bce62dfba1-2778x1540-w800.webp",
+      "ok": true,
+      "bytes": 41804,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/52b072cf3bc5f7143ed585afa822a4bce62dfba1-2778x1540-w800.jpg",
+      "ok": true,
+      "bytes": 71385,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/f08828980a18e0cd79b07c0bca553e10816eec56-2780x1548-w800.webp",
+      "ok": true,
+      "bytes": 33770,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/f08828980a18e0cd79b07c0bca553e10816eec56-2780x1548-w800.jpg",
+      "ok": true,
+      "bytes": 61913,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/149e9d1c88d521fab79f706bb94ba11a5642dbc2-2954x1648-w800.webp",
+      "ok": true,
+      "bytes": 34864,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/149e9d1c88d521fab79f706bb94ba11a5642dbc2-2954x1648-w800.jpg",
+      "ok": true,
+      "bytes": 57284,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/e70b8b59ff06f123bfa657fee28c5cbe073b2ecc-2974x1634-w800.webp",
+      "ok": true,
+      "bytes": 41300,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/e70b8b59ff06f123bfa657fee28c5cbe073b2ecc-2974x1634-w800.jpg",
+      "ok": true,
+      "bytes": 60213,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/97662037cfffd5a6ebc7f03f9dffae2908d2dfcb-2990x1652-w800.webp",
+      "ok": true,
+      "bytes": 9560,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/97662037cfffd5a6ebc7f03f9dffae2908d2dfcb-2990x1652-w800.jpg",
+      "ok": true,
+      "bytes": 27357,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/c94df683e37caba33da79c9813a51d18e1df594e-2984x1634-w800.webp",
+      "ok": true,
+      "bytes": 32642,
+      "retained": true
+    },
+    {
+      "path": "assets/sanity/c94df683e37caba33da79c9813a51d18e1df594e-2984x1634-w800.jpg",
+      "ok": true,
+      "bytes": 56621,
+      "retained": true
+    }
+  ]
+}
